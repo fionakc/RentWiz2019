@@ -82,7 +82,7 @@ DATABASES = {
     }
 }
 
-AUTH_USER_MODEL = 'UserManagement.MyUser'
+AUTH_USER_MODEL = 'UserManagement.RegisteredUser'
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators

@@ -1,7 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-class MyUser(AbstractUser):
+class RegisteredUser(AbstractUser):
     # Next 3 fields are in AbstractUser class.
     # The main feature added in their overrides here is the addition
     # of a help_text.
@@ -21,14 +21,8 @@ class MyUser(AbstractUser):
         help_text='(optional)'
     )
 
-    organization = models.CharField(
-        max_length=150,
-        blank=True,
-        help_text='(optional)'
-    )
-
     # This is the list of fields, other than username and password,
-    # (which are always required) that are required to be filled out at
+    # (which are always required) that are required to be displayed at
     # registration.
     REQUIRED_FIELDS = ['email']
 
