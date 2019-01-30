@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    - Login
+{% endblock %}
+
+{% block page_header %}
+{% endblock %}
+
+{% block main_body %}
+    <div class="div">
+    <h1>Login</h1>
+    {% if user.is_authenticated %}
+        <p><strong>You are already logged in as user: {{ user.get_username }}</strong></p>
+    {% else %}
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-center">
+                <br />
+            <table>
+                {{ form.as_table }}
+            </table>
+            </div>
+            <button type="submit" class="button">Login</button>
+        </form>
+        <br />
+        <p>OR</p>
+        <form  action= /users/register >
+            <input type="submit" value="Register new user" class="button"/>
+        </form>
+    {% endif %}
+    </div>
+{% endblock %}
+
+{% block help_section %}#login{% endblock %}

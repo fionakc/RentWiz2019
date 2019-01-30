@@ -1,0 +1,31 @@
+<!--{% load static %}-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        RentWiz {% block title %}{% endblock %}
+    </title>
+    <meta name="author" content="RentWiz">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--<link rel="stylesheet" href="{% static 'base.css' %}">-->
+    <!--<link rel="shortcut icon" href="/static/images/favicon.ico" type="image/x-icon">-->
+
+    {% block head_extras %}{% endblock %}
+</head>
+
+<body>
+    <header>
+        {% block page_header %}
+        {% endblock %}
+    </header>
+
+    <main>
+        {% block main_body %}
+        {% endblock %}
+    </main>
+
+</body>
+</html>
