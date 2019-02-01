@@ -32,12 +32,14 @@ class PropertyManager(models.Model):
 class Property(models.Model):
     landlord = models.ForeignKey(
         Landlord,
+        null=True,
         on_delete=models.SET_NULL
         # think about blank and null
     )
 
     property_manager = models.ForeignKey(
         PropertyManager,
+        null=True,
         on_delete=models.SET_NULL
         # think about blank and null
     )
@@ -90,8 +92,8 @@ class Listing(models.Model):
     # Following field names were in 2018 ERM diagram. Field types
     # are temporary assumptions now
     description = models.TextField()
-    price_low = models.DecimalField()
-    price_high = models.DecimalField()
+    price_low = models.DecimalField(max_digits=9, decimal_places=2)
+    price_high = models.DecimalField(max_digits=9, decimal_places=2)
     current_tenant_capacity = models.IntegerField()
     start_date = models.DateField()
     end_date = models.DateField()

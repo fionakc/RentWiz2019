@@ -13,5 +13,6 @@ class RegisteredUserAdmin(UserAdmin):
     list_display = ['username', 'email', 'is_guest']
 
 
-admin.site.register(Contact, RegisteredUser, RegisteredUserAdmin)
-
+admin.site.register(Contact)
+admin.site.register(RegisteredUser)
+# admin.site.register(RegisteredUserAdmin)

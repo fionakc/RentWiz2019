@@ -40,6 +40,7 @@ class RegisteredUser(AbstractUser):
 class Contact(models.Model):
     user = models.OneToOneField(
         RegisteredUser,
+        null=True,
         on_delete=models.SET_NULL   # assume we want to retain the data
     )
 
