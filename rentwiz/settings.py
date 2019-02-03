@@ -78,35 +78,35 @@ WSGI_APPLICATION = 'rentwiz.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-if 'RDS_HOSTNAME' in os.environ:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.environ['RDS_DB_NAME'],
-            'USER': os.environ['RDS_USERNAME'],
-            'PASSWORD': os.environ['RDS_PASSWORD'],
-            'HOST': os.environ['aakk7tril2uhvu.citfdyx9zxbn.ap-southeast-2.rds.amazonaws.com'],
-            'PORT': os.environ['5432'],
-        }
-    }
-else:
-    DATABASES = {
-       'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'practicedb',
-            'USER': 'postgres',
-            'PASSWORD': 'pass123',
-            'HOST': 'localhost',
-            'PORT': '5432',
-        }
-    }
-#
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+# if 'RDS_HOSTNAME' in os.environ:
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.postgresql',
+#             'NAME': os.environ['RDS_DB_NAME'],
+#             'USER': os.environ['RDS_USERNAME'],
+#             'PASSWORD': os.environ['RDS_PASSWORD'],
+#             'HOST': os.environ['aakk7tril2uhvu.citfdyx9zxbn.ap-southeast-2.rds.amazonaws.com'],
+#             'PORT': os.environ['5432'],
 #         }
 #     }
+# else:
+#     DATABASES = {
+#        'default': {
+#             'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#             'NAME': 'practicedb',
+#             'USER': 'postgres',
+#             'PASSWORD': 'pass123',
+#             'HOST': 'localhost',
+#             'PORT': '5432',
+#         }
+#     }
+#
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
 # AWS EB Settings
 AWS_QUERYSTRING_AUTH = False
