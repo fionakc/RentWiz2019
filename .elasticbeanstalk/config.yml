@@ -1,4 +1,6 @@
 branch-defaults:
+  3_groupC:
+    environment: django-env
   default:
     environment: django-env
     group_suffix: null
