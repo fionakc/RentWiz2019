@@ -14,7 +14,7 @@ class Landlord(models.Model):
         max_length=8, blank=True
     )
 
-    first_time = models.BooleanField(
+    is_first_timer = models.BooleanField(
         null=True
     )
 
@@ -83,7 +83,7 @@ class Property(models.Model):
     )
     description = models.TextField(blank=True)
 
-    unit_title = models.BooleanField(default=False)
+    has_unit_title = models.BooleanField(default=False)
 
     # Jelle: can be amended to Image table if we want to enable more
     # than 1 picture per property.
@@ -91,7 +91,7 @@ class Property(models.Model):
 
     school_zone = models.CharField(max_length=80, blank=True)
     rating = models.IntegerField(blank=True, null=True)
-    rental_wof = models.BooleanField(null=True)
+    has_rental_wof = models.BooleanField(null=True)
     # insulation information; probably needs to be separate table
     # utilities information ???
     # chattels information should probably be in Listing table
@@ -116,6 +116,9 @@ class Listing(models.Model):
 
     start_date = models.DateField()
     duration = models.CharField(max_length=80, blank=True)
+    # We could split above into a duration unit and quantity, e.g.
+    # IntegerField for quantity and CharField for unit. We could then
+    # have choices such as week, month, year for the unit.
     price = models.DecimalField(max_digits=9,
                                 decimal_places=2,
                                 default='0')
