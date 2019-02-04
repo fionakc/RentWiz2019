@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    - Register
+{% endblock %}
+
+{% block page_header %}
+{% endblock %}
+
+{% block main_body %}
+    <div class="div">
+        <h1>Register new user</h1>
+    <br />
+    {% if user.is_authenticated %}
+        <p><strong>You are already logged in as user: {{ user.get_username }}</strong></p>
+        <p>You must logout before you can sign up as a new user.</p>
+    {% else %}
+
+        <form method="post" id="registration_form">
+        {% csrf_token %}
+            <div class="form-left">
+            <table>
+                {{ form.as_table }}
+            </table>
+            </div>
+        <button type="submit" class="button">Register</button>
+        </form>
+    {% endif %}
+    </div>
+{% endblock %}
