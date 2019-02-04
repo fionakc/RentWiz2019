@@ -49,6 +49,7 @@ class Tenant(models.Model):
         blank=True,
         null=True,
         on_delete=models.SET_NULL,
+        related_name='emergency_contact_set',
     )
 
     employer = models.ForeignKey(
@@ -56,6 +57,7 @@ class Tenant(models.Model):
         blank=True,
         null=True,
         on_delete=models.SET_NULL,
+        related_name='employer_set',
     )
 
     # References will be in the Reference table.
@@ -105,11 +107,13 @@ class Application(models.Model):
     lead_tenant = models.ForeignKey(
         Tenant,
         on_delete=models.PROTECT,
+        related_name='lead_tenant_set',
     )
 
-    # Below commented out because of error message caused by having
-    # ForeignKey as well as ManyToManyField  to same table
-    # co_tenants = models.ManyToManyField(Tenant)
+    co_tenants = models.ManyToManyField(
+        Tenant,
+        related_name='co_tenants_set',
+    )
 
     start_date_request = models.DateField(blank=True)
     duration_request = models.CharField(max_length=80, blank=True)
