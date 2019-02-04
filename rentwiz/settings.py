@@ -29,6 +29,9 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     'django-env.5bphvuyquw.ap-southeast-2.elasticbeanstalk.com',
     'django-app-sarah.ap-southeast-2.elasticbeanstalk.com',
+    'localhost',
+    '127.0.0.1',
+    '.elasticbeanstalk.com',
 ]
 
 
