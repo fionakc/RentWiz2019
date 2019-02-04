@@ -48,7 +48,13 @@ class Application(models.Model):
         on_delete=models.PROTECT
     )
 
-    # Add other fields
+    co_tenants = models.ManyToManyField(Tenant)
+
+    start_date_request = models.DateField(blank=True)
+    duration_request = models.CharField(max_length=80, blank=True)
+    comments = models.TextField(blank=True)
+    # Below should perhaps be in Agreement; not here
+    tcd_acceptance = models.BooleanField(null=True)
 
     def __str__(self):
         return 'Application by ' + str(self.lead_tenant) + ' for ' + str(self.listing)

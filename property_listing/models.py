@@ -4,20 +4,28 @@ from UserManagement.models import Contact
 
 
 class Landlord(models.Model):
-    contact = models.OneToOneField(
+    contact = models.ForeignKey(
         Contact,
         on_delete=models.CASCADE,
         # think about blank and null
     )
 
+    tenancy_services_id = models.CharField(
+        max_length=8, blank=True
+    )
+
+    first_time = models.BooleanField(
+        null=True
+    )
+
 # Add fields for other relevant info for landlord role
 
     def __str__(self):
-        return 'Landlord ' + self.contact.user.get_username()
+        return 'Landlord: ' + self.contact.name
 
 
 class PropertyManager(models.Model):
-    contact = models.OneToOneField(
+    contact = models.ForeignKey(
         Contact,
         on_delete=models.CASCADE,
         # think about blank and null
@@ -26,7 +34,7 @@ class PropertyManager(models.Model):
     # Add fields for other relevant info for property manager role
 
     def __str__(self):
-        return 'PropertyManager ' + self.contact.user.get_username()
+        return 'PropertyManager: ' + self.contact.name
 
 
 class Property(models.Model):
@@ -44,42 +52,54 @@ class Property(models.Model):
         # think about blank and null
     )
 
-    # Following fields copied from 2018 model in GitHub; this is not
-    # identical to ERM from their report and presentation
-    street_address = models.CharField(max_length=50)
-    suburb = models.CharField(max_length=50)
-    region = models.CharField(max_length=50)
+    tenancy_services_id = models.CharField(
+        max_length=8, blank=True
+    )
+
+    room_number = models.CharField(max_length=4, blank=True)
+    unit_number = models.CharField(max_length=4, blank=True)
+    house_number = models.CharField(max_length=4, blank=True)
+    building_name = models.CharField(max_length=80, blank=True)
+    street_name = models.CharField(max_length=80)
+    suburb = models.CharField(max_length=50, blank=True)
     city = models.CharField(max_length=50, blank=True)
     postcode = models.CharField(max_length=10, blank=True)
-    bathrooms = models.IntegerField()
-    tenant_capacity = models.IntegerField()
-    description = models.TextField(blank=True)
-    tag = models.CharField(max_length=50, blank=True)
+    region = models.CharField(max_length=50, blank=True)
+
     bedrooms = models.IntegerField()
-    # Jelle: below should probably be DecimalField
-    price = models.FloatField()
+    bathrooms = models.IntegerField(blank=True, null=True)
+    tenant_capacity = models.IntegerField()
+    car_spaces = models.IntegerField(blank=True, null=True)
+
+    dwelling_type = models.CharField(
+        max_length=20,
+        choices=['House/Townhouse', 'Apartment', 'Room', 'Boarding house room', 'Bedsit/Flat'],
+        blank = True
+    )
+    description = models.TextField(blank=True)
+
+    unit_title = models.BooleanField(default=False)
+
+    # Jelle: can be amended to Image table if we want to enable more
+    # than 1 picture per property.
+    property_picture = models.ImageField(blank=True)
+
+    school_zone = models.CharField(max_length=80, blank=True)
+    rating = models.IntegerField(blank=True, null=True)
+    rental_wof = models.BooleanField(null=True)
+    # insulation information; probably needs to be separate table
+    # utilities information ???
+    # chattels information should probably be in Listing table
+
+    # Following comments copied from 2018 model in GitHub
     # Latitude, longitude fields kept out for version 1
     # - Plan to add these at a later date
     # - Addition will allow implementation of a mapping feature
     # longitude = Column(Numeric(precision=10, scale=7))
     # latitude = Column(Numeric(precision=10, scale=7))
-    date_added = models.DateField(default=timezone.now)
-    # Jelle: why refer "sold" below?
-    date_sold = models.DateField(blank=True, null=True)
-    # Jelle: below should probably be ImageField
-    property_picture = models.CharField(max_length=500, blank=True, null=True)
-
-    # Jelle: Item below commented out for 2019 work
-    # status = models.ForeignKey(
-    #     PropertyStatus,
-    #     related_name='property',
-    #     default=DEFAULT_PROPERTY_STATUS,
-    #     on_delete=models.CASCADE,
-    #     null=True
-    # )
 
     def __str__(self):
-        return 'Property at ' + self.street_address
+        return 'Property at ' + self.street_name  + ' in ' + self.city
 
 
 class Listing(models.Model):
@@ -89,14 +109,19 @@ class Listing(models.Model):
         # think about blank and null
     )
 
-    # Following field names were in 2018 ERM diagram. Field types
-    # are temporary assumptions now
-    description = models.TextField()
-    price_low = models.DecimalField(max_digits=9, decimal_places=2)
-    price_high = models.DecimalField(max_digits=9, decimal_places=2)
-    current_tenant_capacity = models.IntegerField()
     start_date = models.DateField()
-    end_date = models.DateField()
-    tenant_feedback = models.TextField()
+    duration = models.CharField(max_length=80, blank=True)
+    price = models.DecimalField(max_digits=9, decimal_places=2)
+# Following field names were in 2018 ERM diagram.
+    # price_low = models.DecimalField(max_digits=9, decimal_places=2)
+    # price_high = models.DecimalField(max_digits=9, decimal_places=2)
+    payment_frequency = models.CharField(max_length=20)
+
+    description = models.TextField(blank=True)
+
+    # terms and conditions
+    # duties
     # listing_status
 
+    def __str__(self):
+        return 'Listing for ' + str(self.property)  + ' starting on ' + str(self.start_date)
