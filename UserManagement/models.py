@@ -29,13 +29,13 @@ class Contact(models.Model):
     )
 
     name = models.CharField(
-        max_length=80
+        max_length=80, default=''
     )
 
     email = models.EmailField(blank=True)
 
     address_line1 = models.CharField(
-        max_length=80,
+        max_length=80, default=''
     )
 
     address_line2 = models.CharField(

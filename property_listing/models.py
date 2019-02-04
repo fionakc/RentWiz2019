@@ -60,7 +60,7 @@ class Property(models.Model):
     unit_number = models.CharField(max_length=4, blank=True)
     house_number = models.CharField(max_length=4, blank=True)
     building_name = models.CharField(max_length=80, blank=True)
-    street_name = models.CharField(max_length=80)
+    street_name = models.CharField(max_length=80, default='')
     suburb = models.CharField(max_length=50, blank=True)
     city = models.CharField(max_length=50, blank=True)
     postcode = models.CharField(max_length=10, blank=True)
@@ -73,7 +73,12 @@ class Property(models.Model):
 
     dwelling_type = models.CharField(
         max_length=20,
-        choices=['House/Townhouse', 'Apartment', 'Room', 'Boarding house room', 'Bedsit/Flat'],
+        choices=[('House/Townhouse', 'House/Townhouse'),
+                 ('Apartment', 'Apartment'),
+                 ('Room', 'Room'),
+                 ('Boarding house room', 'Boarding house room'),
+                 ('Bedsit/Flat', 'Bedsit/Flat'),
+                 ],
         blank = True
     )
     description = models.TextField(blank=True)
@@ -111,11 +116,13 @@ class Listing(models.Model):
 
     start_date = models.DateField()
     duration = models.CharField(max_length=80, blank=True)
-    price = models.DecimalField(max_digits=9, decimal_places=2)
+    price = models.DecimalField(max_digits=9,
+                                decimal_places=2,
+                                default='0')
 # Following field names were in 2018 ERM diagram.
     # price_low = models.DecimalField(max_digits=9, decimal_places=2)
     # price_high = models.DecimalField(max_digits=9, decimal_places=2)
-    payment_frequency = models.CharField(max_length=20)
+    payment_frequency = models.CharField(max_length=20, default='')
 
     description = models.TextField(blank=True)
 

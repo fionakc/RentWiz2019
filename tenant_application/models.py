@@ -45,10 +45,12 @@ class Application(models.Model):
 
     lead_tenant = models.ForeignKey(
         Tenant,
-        on_delete=models.PROTECT
+        on_delete=models.PROTECT,
     )
 
-    co_tenants = models.ManyToManyField(Tenant)
+    # Below commented out because of error message caused by having
+    # ForeignKey as well as ManyToManyField  to same table
+    # co_tenants = models.ManyToManyField(Tenant)
 
     start_date_request = models.DateField(blank=True)
     duration_request = models.CharField(max_length=80, blank=True)
