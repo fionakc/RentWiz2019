@@ -3,16 +3,17 @@ branch-defaults:
     environment: django-app-sarah
     group_suffix: null
   3_sarah:
-    environment: django-app-sarah
+    environment: null
+    group_suffix: null
   default:
     environment: django-env
     group_suffix: null
   master:
     environment: django-env
 global:
-  application_name: django-app
+  application_name: renttestaws
   branch: null
-  default_ec2_keyname: null
+  default_ec2_keyname: aws-eb
   default_platform: python-3.6
   default_region: ap-southeast-2
   include_git_submodules: true
