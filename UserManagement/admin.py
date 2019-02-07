@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin
 
 from .forms import RegisteredUserCreationForm, RegisteredUserChangeForm
-from .models import RegisteredUser
+from .models import Contact, RegisteredUser
 
 
 class RegisteredUserAdmin(UserAdmin):
@@ -13,5 +13,6 @@ class RegisteredUserAdmin(UserAdmin):
     list_display = ['username', 'email', 'is_guest']
 
 
-admin.site.register(RegisteredUser, RegisteredUserAdmin)
-
+admin.site.register(Contact)
+admin.site.register(RegisteredUser)
+# admin.site.register(RegisteredUserAdmin)
