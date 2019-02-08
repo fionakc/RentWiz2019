@@ -16,15 +16,20 @@
         <p>You must logout before you can sign up as a new user.</p>
     {% else %}
 
-        <form method="post" id="registration_form">
-        {% csrf_token %}
-            <div class="form-left">
-            <table>
-                {{ form.as_table }}
-            </table>
-            </div>
-        <button type="submit" class="button">Register</button>
-        </form>
+{#        <form method="post" id="registration_form">#}
+{#        {% csrf_token %}#}
+{#            <div class="form-left">#}
+{#            <table>#}
+{#                {{ form.as_table }}#}
+{#            </table>#}
+{#            </div>#}
+{#        <button type="submit" class="button">Register</button>#}
+{#        </form>#}
+
+        <a href="{% url 'register_propertymanager' %}"><button class="btn">Sign up as Property Manager</button></a>
+        <a href="{% url 'register_landlord' %}"><button class="btn">Sign up as Landlord</button></a>
+        <a href="{% url 'register_tenant' %}"><button class="btn">Sign up as Tenant</button></a>
+
     {% endif %}
     </div>
 {% endblock %}

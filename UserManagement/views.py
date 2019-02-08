@@ -19,3 +19,16 @@ def register(request):
     return render(request, 'register.html', {'form': form})
 
 
+def register_tenant(request):
+    return render(request, 'register_tenant.html')
+
+
+def register_landlord(request):
+    return render(request, 'register_landlord.html')
+
+
+def register_propertymanager(request):
+    return render(request, 'register_propertymanager.html')
+
+
+
