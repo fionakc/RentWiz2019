@@ -1,0 +1,12 @@
+.formCheckbox {
+ float: left;
+}
+.formCheckbox label{
+    margin-left: 1em;
+    color: #8190A5;
+    font-family: Lato;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 36px;
+    text-align: left;
+}

@@ -1,0 +1,23 @@
+.applicationStatus100Block {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin: auto;
+    width: 90%;
+}
+
+.applicationStatus100Block h3 {
+    width: 80%;
+    margin: 0.5em auto;
+}
+
+.applicationStatus100Block h4 {
+    width: 75%;
+    margin: 0.5em auto;
+}
+
+.applicationStatus100Block--controlButtons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 60%;
+    margin: auto;
+}

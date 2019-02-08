@@ -1,0 +1,28 @@
+.pageMainHeading {
+    margin: 0.25em auto;
+    color: #47525E;
+    font-size: 2.5em;
+    font-weight: 600;
+}
+
+.pageSubHeading {
+  color: #47525E;
+  font-family: Lato;
+  font-size: 1.75em;
+  font-weight: 700;
+  line-height: 34px;
+  text-align: center;
+  margin: 1em auto;
+}
+
+.pageSubSubHeading {
+  color: #47525E;
+  font-family: Lato;
+  font-size: 26px;
+  font-weight: 400;
+}
+.pagePara {
+  color: #47525E;
+  font-family: Lato;
+  font-weight: 400;
+}

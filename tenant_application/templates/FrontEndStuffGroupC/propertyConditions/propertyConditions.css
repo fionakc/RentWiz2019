@@ -1,0 +1,65 @@
+.propertyConditions {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.propertyConditions h1 {
+    margin: 1em auto;
+    color: #47525E;
+    font-family: Lato;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 50px;
+    width: 650px;
+    text-align: center;
+}
+
+.propertyConditions h3 {
+    color: #47525E;
+    font-family: Lato;
+    font-weight: 700;
+    line-height: 34px;
+    margin: 0.5em auto;
+}
+
+.propertyConditions--block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 1em  3em;
+    margin:auto;
+    width: 70%;
+}
+
+.propertyCondition--block_list__item h2{
+    color: #47525E;
+    font-family: Lato;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: left;
+    margin: 0.5em auto;
+}
+
+
+
+.propertyCondition--block_list__item, .propertryCondition--block_duties__item {
+    padding-left: 30%;
+}
+
+.propertyCondition--block_list__item ol li, .propertryCondition--block_duties__item ol li {
+  margin: 0.35em auto;
+  color: #8190A5;
+  font-family: Lato;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 36px;
+  text-align: left;
+  list-style-position: inside;
+}
+
+
+.propertyCondition--controlButtons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+

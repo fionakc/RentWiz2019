@@ -1,0 +1,49 @@
+.confirmationBlock {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin: 1em auto;
+}
+
+.confirmationBlock--propertyDetails {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 70%;
+    margin: auto;
+}
+
+.confirmationBlock--propertyDetails h3 {
+    font-size: large;
+}
+
+.confirmationBlock--propertyDetails__detail___img img{
+    width: 100%;
+    height: auto;
+    margin: 1em auto;
+}
+
+.confirmationBlock--propertyDetails__adultsInvited {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.confirmationBlock--propertyDetails__adultsInvited ol{
+    list-style-position: inside;
+    display: grid;
+    width: 100%;
+}
+
+.confirmationBlock--controlButtons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: auto;
+    width: 75%;
+}
+
+.left button{
+    float: left;
+}
+
+.right button{
+    float: right;
+}
+
