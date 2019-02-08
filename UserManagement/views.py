@@ -1,7 +1,7 @@
 from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
 
-from .forms import RegisteredUserCreationForm
+from .forms import RegisteredUserCreationForm, PropertyManagerCreationForm
 
 
 def register(request):
@@ -28,7 +28,21 @@ def register_landlord(request):
 
 
 def register_propertymanager(request):
-    return render(request, 'register_propertymanager.html')
+    #return render(request, 'register_propertymanager.html')
+
+    if request.method == 'POST':
+        form = PropertyManagerCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('home')
+    else:
+        form = PropertyManagerCreationForm()
+
+    return render(request, 'register_propertymanager.html', {'form': form})
 
 
 
