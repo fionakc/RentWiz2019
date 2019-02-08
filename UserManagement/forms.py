@@ -102,3 +102,33 @@ class PropertyManagerCreationForm(ContactCreationForm):
         contact.save()
         property_manager = PropertyManager(contact=contact)
         property_manager.save()
+
+
+class TenantCreationForm(ContactCreationForm):
+    pass
+
+    def save(self):
+        data = self.cleaned_data
+        user = RegisteredUser(username=data['registered_username'])
+
+        user.set_password(data["password1"])
+        user.save()
+        contact = Contact(user=user,
+                          name=data['name'],
+                          email=data['email'],
+                          address_line1=data['address_line1'],
+                          address_line2=data['address_line2'],
+                          address_line3=data['address_line3'],
+                          home_phone=data['home_phone'],
+                          work_phone=data['work_phone'],
+                          mobile_phone=data['mobile_phone'],
+                          #photo=data['photo'],
+        )
+        contact.save()
+        tenant = Tenant(contact=contact,
+                        legal_name=data['name'],
+                        is_18_plus=True,)  #using these two values to get the form to also save to tenants, should have own fields on form
+                                            #or be created when filling out tenant profile.
+                                            #only an issue atm because creating a tenant and these are required fields, so must be filled on construction
+        tenant.save()
+
