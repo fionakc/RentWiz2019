@@ -1,11 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>RentWiz</title>
-</head>
+{% extends 'base.html' %}
 
-<body>
-Welcome home from RentWiz
-</body>
-</html>
+{% block title %}
+    - Home
+{% endblock %}
+
+{% block head_extras %}
+    <meta name="description" content="this should be a description of what Circa about">
+    <meta name="keywords" content="add some keywords for Search Engine Optimisation">
+    {% load static %}
+{#    <link rel="stylesheet" href="{% static 'index.css' %}">#}
+{% endblock %}
+
+{% block page_header %}
+{% endblock %}
+
+{% block main_body %}
+    <!--- TAGLINE BANNER ---------------------->
+    <div class="tagline">
+        <p class="headertext">Rentwiz, houses for rent. the home of rentals for kiwis. </p>
+    </div>
+    <!-- TAGLINE BANNER ENDS ------------------------->
+
+{% endblock %}
+
+{% block help_section %}#home{% endblock %}
