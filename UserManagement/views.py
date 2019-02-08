@@ -36,9 +36,10 @@ def register_propertymanager(request):
             form.save()
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=raw_password)
-            login(request, user)
-            return redirect('home')
+            #user = authenticate(username=username, password=raw_password)
+            #login(request, user)
+            return redirect('login') #previous lines commented out because not actioning login correctly. -password??
+        #currently redirects to login page.
     else:
         form = PropertyManagerCreationForm()
 
