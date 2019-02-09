@@ -9,3 +9,6 @@ def addTenants(request):
 
 def conditions(request):
     return render(request, 'conditions.html')
+
+def confirmation(request):
+    return render(request, 'confirmation.html')
