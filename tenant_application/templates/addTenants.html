@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% load static %}
+{% block main_body %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        RentWiz {% block title %}{% endblock %}
+    </title>
+    <meta name="author" content="RentWiz">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'addTenants.css' %}">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" />
+    <script src="{% static 'javascript.js' %}"></script>
+    <!--<link rel="shortcut icon" href="/static/images/favicon.ico" type="image/x-icon">-->
+
+    {% block head_extras %}{% endblock %}
+</head>
+
+<body>
+    
+    
+     <div class="adultProfile">
+
+      <ProgressBar percent="40"/>
+        <h1>Who are the other tenants you'll be living with?</h1>
+
+         <div class="adultProfile--block">
+            <div class="adultProfile--details">
+                <img src="{% static 'profilepic.jpg'%}" alt="can't load" class="adultProfile--details__pic"/>
+                <div class="adultProfile--details__nameBlock">
+                    <h3 class="adultProfile--details__nameBlock_name">Jack Smith</h3>
+                    <div class="adultProfile--details__nameBlock_verifiedStatus">
+                        <img src="{% static 'check-mark.png'%}" alt= "can't load"/>
+                        <p>Verified</p>
+                    </div>
+
+                </div>
+                <div class="adultProfile--details_info">
+                    <ul>
+                        <li>Email: Jack@gmail.com</li>
+                        <li>DOB: 12 Dec 92</li>
+                        <li>Pets: No</li>
+                        <li>Smoker: No</li>
+                        <li>Mobile: 021322323</li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="adultProfile--details">
+                <img src="{% static 'whoTenant.png'%}" alt="can't load" class="adultProfile--details__pic"/>
+                <div class="adultProfile--details__add">
+                    <input type="email" placeholder="someone@example.com"/>
+                    <button>Invite</button>
+                </div>
+                <div class="adultProfile--details_info">
+                    <p>
+                    Enter your potential flatmate's email address above to send them an invitation.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="adultProfile--details">
+                <img src="{% static 'whoTenant.png'%}" alt="can't load" class="adultProfile--details__pic"/>
+                <div class="adultProfile--details__add">
+                    <input type="email" placeholder="someone@example.com"/>
+                    <button>Invite</button>
+                </div>
+                <div class="adultProfile--details_info">
+                    <p>
+                    Enter your potential flatmate's email address above to send them an invitation.
+
+                    </p>
+                </div>
+            </div>
+         </div>
+
+        <div class="controlButtons">
+            <Link to='/'>
+                <div class="controlButtons--leftButton">
+                    <ControlButton name="Back"/>
+                </div>
+            </Link>
+
+            <div class="controlButtons--centerButton">
+                <ControlButton name="Add More People"/>
+            </div>
+            <Link to="/propertyconditions">
+                <div class="controlButtons--rightButton">
+                    <ControlButton name="Next"/>
+                </div>
+            </Link>
+
+
+        </div>
+
+      </div>
+ </body>
+        {% endblock %}
