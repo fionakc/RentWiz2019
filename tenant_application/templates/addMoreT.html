@@ -26,7 +26,7 @@
      <div class="adultProfile">
 
       <ProgressBar percent="40"/>
-        <h1>Who are the other tenants you'll be living with?</h1>
+        <h1>Add More Tenants</h1>
 
          <div class="adultProfile--block">
             <div class="adultProfile--details">
@@ -81,7 +81,7 @@
          </div>
 
         <div class="controlButtons">
-         <a class="controlButtons--leftButton" href="{% url 'apply' %}">Back</a>
+         <a class="controlButtons--leftButton button" href="{% url 'AddTenants' %}">Back</a>
             {% comment %} <Link to='/'>
                 <div class="controlButtons--leftButton">
                     <ControlButton name="Back"/>
@@ -89,13 +89,13 @@
             </Link> {% endcomment %}
 
             <div class="controlButtons--centerButton">
-            <a class="controlButtons--centerButton" href="{% url 'addMoreT' %}">Add More Tenants</a>
+            <a class="controlButtons--centerButton" href="{% url 'addMore' %}">Add More Tenants</a>
 
                 {% comment %} <ControlButton name="Add More People"/> {% endcomment %}
             </div>
-            <Link to="/propertyconditions"> 
+            <Link to="/propertyconditions">
                 <div class="controlButtons--rightButton">
-                <a class="controlButtons--rightButton" href="{% url 'conditions' %}">Next</a>
+                <a class="controlButtons--centerButton" href="{% url 'conditions' %}">Next</a>
 
                     <ControlButton name="Next"/>
                 </div>

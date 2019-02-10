@@ -7,6 +7,9 @@ def apply(request):
 def addTenants(request):
     return render(request, 'addTenants.html')
 
+def addMoreT(request):
+    return render(request, 'addMoreT.html')
+
 def conditions(request):
     return render(request, 'conditions.html')
 
