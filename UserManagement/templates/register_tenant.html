@@ -1,34 +1,3 @@
-{% extends 'base.html' %}
-
-{% block title %}
-    - Register Property Manager
-{% endblock %}
-
-{% block head_extras %}
-    <meta name="description" content="this should be a description">
-    <meta name="keywords" content="add some keywords">
-    {% load static %}
-{#    <link rel="stylesheet" href="{% static 'index.css' %}">#}
+{%  extends 'register.html' %}
 
 
-{% endblock %}
-
-{% block page_header %}
-{% endblock %}
-
-{% block main_body %}
-
-    <form method="post">
-            {% csrf_token %}
-            <div class="form-center">
-                <br />
-            <table>
-                {{ form.as_table }}
-            </table>
-            </div>
-            <button type="submit" class="button">Sign up</button>
-    </form>
-
-{% endblock %}
-
-{% block help_section %}#home{% endblock %}

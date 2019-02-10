@@ -1,7 +1,9 @@
 from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
 
-from .forms import RegisteredUserCreationForm, PropertyManagerCreationForm, TenantCreationForm
+from .forms import RegisteredUserCreationForm, PropertyManagerCreationForm, TenantCreationForm, LandlordCreationForm
+
+
 
 
 def register(request):
@@ -16,7 +18,8 @@ def register(request):
             return redirect('home')
     else:
         form = RegisteredUserCreationForm()
-    return render(request, 'register.html', {'form': form})
+    #return render(request, 'register.html', {'form': form})
+    return render(request, 'register.html')
 
 
 def register_tenant(request):
@@ -24,20 +27,29 @@ def register_tenant(request):
     if request.method == 'POST':
         form = TenantCreationForm(request.POST)
         if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
+            user = form.save()
             raw_password = form.cleaned_data.get('password1')
-            #user = authenticate(username=username, password=raw_password)
-            #login(request, user)
-            return redirect('login') #previous lines commented out because not actioning login correctly. -password??
-        #currently redirects to login page.
+            user = authenticate(username=user.username, password=raw_password)
+            login(request, user)
+            return redirect('home')
     else:
         form = TenantCreationForm()
     return render(request, 'register_tenant.html', {'form': form})
 
 
 def register_landlord(request):
-    return render(request, 'register_landlord.html')
+
+    if request.method == 'POST':
+        form = LandlordCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=user.username, password=raw_password)
+            login(request, user)
+            return redirect('home')
+    else:
+        form = LandlordCreationForm()
+    return render(request, 'register_landlord.html', {'form': form})
 
 
 def register_propertymanager(request):
@@ -46,13 +58,11 @@ def register_propertymanager(request):
     if request.method == 'POST':
         form = PropertyManagerCreationForm(request.POST)
         if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
+            user = form.save()
             raw_password = form.cleaned_data.get('password1')
-            #user = authenticate(username=username, password=raw_password)
-            #login(request, user)
-            return redirect('login') #previous lines commented out because not actioning login correctly. -password??
-        #currently redirects to login page.
+            user = authenticate(username=user.username, password=raw_password)
+            login(request, user)
+            return redirect('home')
     else:
         form = PropertyManagerCreationForm()
 

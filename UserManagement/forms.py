@@ -104,6 +104,7 @@ class PropertyManagerCreationForm(ContactCreationForm):
         property_manager.save()
 
 
+
 class TenantCreationForm(ContactCreationForm):
     pass
 
@@ -131,4 +132,5 @@ class TenantCreationForm(ContactCreationForm):
                                             #or be created when filling out tenant profile.
                                             #only an issue atm because creating a tenant and these are required fields, so must be filled on construction
         tenant.save()
+        return user
 
