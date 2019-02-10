@@ -1,0 +1,127 @@
+
+
+.progressBar {
+ 
+    padding: 1em;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 70%;
+    margin: auto;
+}
+
+.progressBar--indicator {
+    padding: 5px;
+    position: relative;
+    background-color: #E5E9F2;
+    height: fit-content;
+    margin: auto;
+    width: 100%;
+       
+}
+
+.progressBar--percent{
+    padding: 5px;
+    position: relative;
+    height: fit-content;
+    margin: 5%;
+    width: 100%;
+}
+
+.pageSubSubHeading {
+    color: #47525E;
+    font-family: Lato;
+    font-size: 26px;
+    font-weight: 400;
+    margin: 0%;
+    padding: 0%;
+    text-align: center;
+  }
+
+.progressBar--indicator span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 5px;
+    transition: all 1s;
+    background-color: #8190A5;
+   
+}
+
+.confirmationBlock {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin: 1em auto;
+}
+
+.confirmationBlock--propertyDetails {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 70%;
+    margin: auto;
+}
+
+.confirmationBlock--propertyDetails h3 {
+    font-size: large;
+}
+
+.confirmationBlock--propertyDetails__detail___img img{
+    width: 100%;
+    height: auto;
+    margin: 1em auto;
+}
+
+.confirmationBlock--propertyDetails__adultsInvited {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.confirmationBlock--propertyDetails__adultsInvited ol{
+    list-style-position: inside;
+    display: grid;
+    width: 100%;
+}
+
+.confirmationBlock--controlButtons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: auto;
+    width: 75%;
+}
+
+.left button{
+    float: left;
+}
+
+.right button{
+    float: right;
+}
+
+.pageMainHeading {
+    margin: 0.25em auto;
+    color: #47525E;
+    font-size: 2.5em;
+    font-weight: 600;
+    text-align: center;
+}
+
+.pageSubHeading {
+  color: #47525E;
+  font-family: Lato;
+  font-size: 1.75em;
+  font-weight: 700;
+  line-height: 34px;
+  text-align: center;
+  margin: 1em auto;
+}
+
+.pageSubSubHeading {
+  color: #47525E;
+  font-family: Lato;
+  font-size: 26px;
+  font-weight: 400;
+}
+.pagePara {
+  color: #47525E;
+  font-family: Lato;
+  font-weight: 400;
+}

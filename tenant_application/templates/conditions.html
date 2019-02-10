@@ -1,0 +1,82 @@
+     {% extends "base.html" %}
+{% load static %}
+{% block main_body %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        RentWiz {% block title %}{% endblock %}
+    </title>
+    <meta name="author" content="RentWiz">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'propertyConditions.css' %}">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" />
+    <script src="{% static 'javascript.js' %}"></script>
+    <!--<link rel="shortcut icon" href="/static/images/favicon.ico" type="image/x-icon">-->
+
+    {% block head_extras %}{% endblock %}
+</head>
+     
+     <body>
+      <div class="propertyConditions">
+          <ProgressBar percent="60"/>
+          <h1>
+            Are you aware of the below Duties & Conditions of this property?
+          </h1>
+          <h3>
+           Please confirm below that you are happy to accept <br></br>the Conditions and Duties set out by the lanlord <br></br> of this property.
+          </h3>
+          <div class="propertyConditions--block">
+              <div class="propertryCondition--block_list">       
+                <div class="propertyCondition--block_list__item">
+                    <h2>
+                      Conditions: 
+                    </h2>
+                    <ol>
+                        <li>No Pets</li>
+                        <li>No motorbikes</li>
+                        <li>No smoking</li>
+                        <li>Max 3 tenents</li>
+                        <li>This is a list item</li>
+                        <li>Yup, another list item</li>
+                        <li>Yup, another list item</li>
+                    </ol>
+                    <FormCheckbox label="I accept"/>
+                </div>
+                </div>
+                <div class="propertyCondition--block_list__item">
+                    <h2>
+                      Duties of tenant: 
+                    </h2>
+                    <ol>
+                      <li>Tenant must clean roof  annually</li>
+                      <li>Lawns mowed fortnightly</li>
+                      <li>Must sweep chimney weekly</li>
+                      <li>Must keep garden tidy</li>
+                      <li>This is a list item</li>
+                      <li>Yup, another list item</li>
+                      <li>This is a list item</li>
+                    </ol>
+                    <div>
+                    <FormCheckbox label="I accept"/>
+                    </div>
+                </div>    
+          </div>
+          <div class="propertyCondition--controlButtons">
+            <Link to="/adultprofile">
+              <ControlButton name="Back"/>
+            </Link>
+
+            <Link to="/propertyconfirmation">
+              <ControlButton name="Agree & Next"/>
+            </Link>
+            
+          </div>
+          
+     </div>
+
+     </body>
+        {% endblock %}
