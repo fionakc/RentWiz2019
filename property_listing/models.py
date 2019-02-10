@@ -11,7 +11,7 @@ class Landlord(models.Model):
     )
 
     tenancy_services_id = models.CharField(
-        max_length=8, blank=True
+        max_length=8, blank=True, default=''
     )
 
     is_first_timer = models.BooleanField(
@@ -53,18 +53,18 @@ class Property(models.Model):
     )
 
     tenancy_services_id = models.CharField(
-        max_length=8, blank=True
+        max_length=8, blank=True, default=''
     )
 
-    room_number = models.CharField(max_length=4, blank=True)
-    unit_number = models.CharField(max_length=4, blank=True)
-    house_number = models.CharField(max_length=4, blank=True)
-    building_name = models.CharField(max_length=80, blank=True)
+    room_number = models.CharField(max_length=4, blank=True, default='')
+    unit_number = models.CharField(max_length=4, blank=True, default='')
+    house_number = models.CharField(max_length=4, blank=True, default='')
+    building_name = models.CharField(max_length=80, blank=True, default='')
     street_name = models.CharField(max_length=80, default='')
-    suburb = models.CharField(max_length=50, blank=True)
-    city = models.CharField(max_length=50, blank=True)
-    postcode = models.CharField(max_length=10, blank=True)
-    region = models.CharField(max_length=50, blank=True)
+    suburb = models.CharField(max_length=50, blank=True, default='')
+    city = models.CharField(max_length=50, blank=True, default='')
+    postcode = models.CharField(max_length=10, blank=True, default='')
+    region = models.CharField(max_length=50, blank=True, default='')
 
     bedrooms = models.IntegerField()
     bathrooms = models.IntegerField(blank=True, null=True)
@@ -79,17 +79,17 @@ class Property(models.Model):
                  ('Boarding house room', 'Boarding house room'),
                  ('Bedsit/Flat', 'Bedsit/Flat'),
                  ],
-        blank = True
+        blank = True, default=''
     )
-    description = models.TextField(blank=True)
+    description = models.TextField(blank=True, default='')
 
     has_unit_title = models.BooleanField(default=False)
 
     # Jelle: can be amended to Image table if we want to enable more
     # than 1 picture per property.
-    property_picture = models.ImageField(blank=True)
+    property_picture = models.ImageField(blank=True, default='')
 
-    school_zone = models.CharField(max_length=80, blank=True)
+    school_zone = models.CharField(max_length=80, blank=True, default='')
     rating = models.IntegerField(blank=True, null=True)
     has_rental_wof = models.BooleanField(null=True)
     # insulation information; probably needs to be separate table
@@ -115,7 +115,7 @@ class Listing(models.Model):
     )
 
     start_date = models.DateField()
-    duration = models.CharField(max_length=80, blank=True)
+    duration = models.CharField(max_length=80, blank=True, default='')
     # We could split above into a duration unit and quantity, e.g.
     # IntegerField for quantity and CharField for unit. We could then
     # have choices such as week, month, year for the unit.
@@ -127,7 +127,7 @@ class Listing(models.Model):
     # price_high = models.DecimalField(max_digits=9, decimal_places=2)
     payment_frequency = models.CharField(max_length=20, default='')
 
-    description = models.TextField(blank=True)
+    description = models.TextField(blank=True, default='')
 
     # terms and conditions
     # duties

@@ -40,26 +40,26 @@ class Contact(models.Model):
     )
 
     address_line2 = models.CharField(
-        max_length=80, blank=True
+        max_length=80, blank=True, default=''
     )
 
     address_line3 = models.CharField(
-        max_length=80, blank=True
+        max_length=80, blank=True, default=''
     )
 
     home_phone = models.CharField(
-        max_length=20, blank=True
+        max_length=20, blank=True, default=''
     )
 
     work_phone = models.CharField(
-        max_length=20, blank=True
+        max_length=20, blank=True, default=''
     )
 
     mobile_phone = models.CharField(
-        max_length=20, blank=True
+        max_length=20, blank=True, default=''
     )
 
-    photo = models.ImageField(blank=True)
+    photo = models.ImageField(blank=True, default='')
 
     def __str__(self):
         return 'Contact: ' + self.name
