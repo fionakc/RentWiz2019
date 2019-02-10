@@ -81,3 +81,17 @@ text-align: center
     float: right;
 }
 
+.controlButton {
+    background-color: #008001;
+    border-radius: 5px;
+    width: 150px;
+    height: 50.68px;
+    margin: 1em auto;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: medium;
+    font-weight: 400;
+  }
+  
+  
