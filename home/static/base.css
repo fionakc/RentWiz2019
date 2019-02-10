@@ -176,6 +176,7 @@ body {
     height: 2px;
     top:-5px;
     background-color: #4CAF50;
+
 }
 
 .footer {
@@ -187,6 +188,7 @@ body {
    color: #4CAF50;
    font-size: 24px;
    padding: 5px;
+    background-color: white;
 }
 
 #footerTable{
@@ -195,4 +197,6 @@ body {
 #footerTableCol{
   width: 33%;
 }
+
+
 

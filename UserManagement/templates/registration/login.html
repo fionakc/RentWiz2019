@@ -1,34 +1,46 @@
 {% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
 
 {% block title %}
     - Login
 {% endblock %}
 
 {% block page_header %}
+    <link rel="stylesheet" href="{% static 'loginAndRegister.css' %}">
 {% endblock %}
 
 {% block main_body %}
-    <div class="div">
-    <h1>Login</h1>
-    {% if user.is_authenticated %}
-        <p><strong>You are already logged in as user: {{ user.get_username }}</strong></p>
-    {% else %}
-        <form method="post">
-            {% csrf_token %}
-            <div class="form-center">
-                <br />
-            <table>
-                {{ form.as_table }}
-            </table>
-            </div>
-            <button type="submit" class="button">Login</button>
-        </form>
-        <br />
-        <p>OR</p>
-        <form  action= /users/register >
-            <input type="submit" value="Register new user" class="button"/>
-        </form>
-    {% endif %}
+    <div class="Login">
+        <div class="Login__Aside"></div>
+        <div class="Login__Form">
+
+            {% if user.is_authenticated %}
+                <div class="FormTitle">You are already logged in as: {{ user.get_username }}</div>
+            {% else %}
+
+                <div class="FormTitle">
+                    <a class="FormTitle__Link{% if request.path == '/users/login/' %} FormTitle__Link--Active{% endif %}"
+                       href="{% url 'login' %}">Sign In</a> or <a
+                        class="FormTitle__Link{% if request.path == '/users/register/' %} FormTitle__Link--Active{% endif %}"
+                        href="{% url 'register' %}">Sign Up</a>
+                </div>
+
+                <form method="post">
+                    {% csrf_token %}
+                    {% for field in form %}
+                        <div class="FormField">
+                            <label class="FormField__Label">{{ field.label_tag }}</label>
+                            {% render_field field class="FormField__Input inputTransparent" %}
+                        </div>
+                    {% endfor %}
+                    <div class="FormField">
+                        <button type="submit" class="FormField__Button mr-20">Sign In</button>
+                    </div>
+                </form>
+            {% endif %}
+        </div>
     </div>
 {% endblock %}
 
