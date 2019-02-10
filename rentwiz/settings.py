@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'property_listing',
     'tenant_application',
     'UserManagement.apps.UsersConfig',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
