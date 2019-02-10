@@ -23,4 +23,5 @@ urlpatterns = [
     path('users/', include('UserManagement.urls')),
     path('users/', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
+    path('listing/', include('property_listing.urls')),
 ]

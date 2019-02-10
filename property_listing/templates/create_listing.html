@@ -1,0 +1,64 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="{% static 'custom.css' %}">
+    <link rel="stylesheet" href="{% static 'cosmo.css' %}">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous" defer></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous" defer></script>
+
+</head>
+<body>
+    <div class="container">
+            <br/>
+            <h3>Create a listing</h3>
+            <hr>
+
+            <!-- Landlord must be logged in -->
+            <form>
+            <!-- Availability + Price -->
+            <h4>Availability</h4>
+            
+                    <fieldset>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                            <label for="availability">Availability</label>
+                            <input type="date" class="form-control" name="availability">
+                    </fieldset>
+                        
+
+
+            <button type="button" class="btn btn-primary">Next</button>
+            <h4>Price</h4>
+            <button type="button" class="btn btn-outline-primary">Back</button>
+            <button type="button" class="btn btn-primary">Next</button>
+            <!-- Location -->
+            <h4>Location</h4>
+            <button type="button" class="btn btn-outline-primary">Back</button>
+            <button type="button" class="btn btn-primary">Next</button>
+            <!-- Property details -->
+            <h4>Property Details</h4>
+            <button type="button" class="btn btn-outline-primary">Back</button>
+            <button type="button" class="btn btn-primary">Next</button>
+            
+            <!-- Review Details + submit -->
+
+            </form>
+    </div>
+
+
+</body>
+</html>
