@@ -33,7 +33,7 @@ class Contact(models.Model):
         max_length=80, default=''
     )
 
-    email = models.EmailField(blank=True)
+    email = models.EmailField()
 
     address_line1 = models.CharField(
         max_length=80, default=''
@@ -59,7 +59,7 @@ class Contact(models.Model):
         max_length=20, blank=True
     )
 
-    photo = models.ImageField(blank=True)
+    #photo = models.ImageField(blank=True)
 
     def __str__(self):
         return 'Contact: ' + self.name
