@@ -47,7 +47,13 @@ def updateTenantProfile(request, tenant_id):
     contact = [x for x in Contact.objects.all() if request.user == x.user][0]
     tenant = [y for y in Tenant.objects.all() if contact == y.contact][0]
 
-
+    initial_data = {
+        #for every field, field name and field value
+        # 'legal_name': tenant.legal_name,
+        'date_of_birth': tenant.date_of_birth,
+        'is_smoker': tenant.is_smoker,
+        'has_pets': tenant.has_pets,
+    }
     if request.method == 'POST':
         form = TenantProfile_part1_Form(request.POST)
         if form.is_valid():
@@ -57,7 +63,7 @@ def updateTenantProfile(request, tenant_id):
 
             form.save(tenant)  # still need this??
     else:
-        form = TenantProfile_part1_Form()
+        form = TenantProfile_part1_Form(initial=initial_data)
 
     context = {'contact': contact, 'tenant': tenant, 'form': form}
     return render(request, 'tenantProfile.html', context)
