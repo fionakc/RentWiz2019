@@ -76,7 +76,7 @@ class LandlordCreationForm(forms.Form):
     mobile_phone = forms.CharField(
         max_length=20
     )
-    photo = forms.ImageField()
+    #photo = forms.ImageField()
 
 
 class PropertyManagerCreationForm(ContactCreationForm):
