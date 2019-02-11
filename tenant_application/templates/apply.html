@@ -26,8 +26,8 @@
         <h1>Good Choice!</h1>
         <h4>You are applying to be considered for the following property: (id: {{ queryset.id }})</h4>
         <div class="rentalBlock--img">
-        {% comment %} <img src="{% static 'logo.png' %}" class="logo" /> {% endcomment %}
-        <img src="{% static 'house1.png' %}" alt="can't load"/>
+{#            <img src="{% static 'house1.png' %}" alt="can't load"/>#}
+            <img src="{{ queryset.property_picture.url }}" alt="{{ queryset.description }}"/> {# DOESN"T WORK #}
         </div>
         <div class="rentalBlock--description">
             <ul class="rentalBlock--description__list">
