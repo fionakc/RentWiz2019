@@ -10,7 +10,8 @@ from django import forms
 class TenantProfile_part1_Form(forms.Form):
 
     date_of_birth = forms.DateField(
-        required=False
+        required=False,
+        help_text='yyyy-mm-dd'
     )
 
     is_smoker = forms.BooleanField(
