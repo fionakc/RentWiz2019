@@ -38,6 +38,9 @@ class PropertyManager(models.Model):
 
 
 class Property(models.Model):
+    class Meta:
+        verbose_name_plural = 'Properties'
+
     landlord = models.ForeignKey(
         Landlord,
         null=True,
