@@ -10,26 +10,28 @@
 
 {% block main_body %}
     <div class="landlordDetails">
-        <p>test</p>
-            <!-- {% if user.is_authenticated %} -->
+        <p>test }</p>
+{#            <!-- {% if user.is_authenticated %} -->#}
             <h1 class="landlordHeader">Landlord Profile</h1>
             <img class="landlordImage" src="https://www.atomix.com.au/media/2015/06/atomix_user31.png" alt="landlordProfile" />
                 <form class="landlordForm" method="post">
-                    <label>Name:</label>
-                    <input /><p></p>
-                    <label>Company Name:</label>
-                    <input /><p></p>
-                    <label>Phone:</label>
-                    <input /><p></p>
-                    <label>Fax:</label>
-                    <input /><p></p>
-                    <label>Email:</label>
-                    <input /><p></p>
-                    <label>Address:</label>
-                    <input /><p></p>
+                    {% csrf_token %}
+                    {{ form }}
+{#                    <label>Name:</label>#}
+{#                    <input /><p>{{ contact.name }}  </p>#}
+{#                    <label>Company Name:</label>#}
+{#                    <input /><p></p>#}
+{#                    <label>Phone:</label>#}
+{#                    <input /><p></p>#}
+{#                    <label>Fax:</label>#}
+{#                    <input /><p></p>#}
+{#                    <label>Email:</label>#}
+{#                    <input /><p></p>#}
+{#                    <label>Address:</label>#}
+{#                    <input /><p></p>#}
                     <button type="submit" class="saveBtn">Save</button>
                 </form>
-            <!-- {% endif %} -->
+{#            <!-- {% endif %} -->#}
         </div>
 {% endblock %}
 
