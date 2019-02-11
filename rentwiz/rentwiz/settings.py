@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
+    'localhost',
     'django-env.5bphvuyquw.ap-southeast-2.elasticbeanstalk.com',
 ]
 
@@ -41,18 +42,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home',
+    'property_listing',
+    'tenant_application',
     'UserManagement.apps.UsersConfig',
-    'corsheaders',
-    'rest_framework',
-    'webpack_loader',
+    'widget_tweaks',
 ]
-
-WEBPACK_LOADER = {
-    'DEFAULT': {
-        'BUNDLE_DIR_NAME': 'bundles/',
-        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
-    }
-}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -62,7 +56,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'rentwiz.urls'
@@ -101,28 +94,33 @@ WSGI_APPLICATION = 'rentwiz.wsgi.application'
 #         }
 #     }
 # else:
-DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'practicedb',
-            'USER': 'postgres',
-            'PASSWORD': 'pass123',
-            'HOST': 'localhost',
-            'PORT': '5432',
-        }
-    }
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'practicedb',
-#         'USER': 'postgres',
-#         'PASSWORD': 'pass123',
-#         'HOST': 'localhost',
-#         'PORT': '5432',
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#             'NAME': 'practicedb',
+#             'USER': 'postgres',
+#             'PASSWORD': 'pass123',
+#             'HOST': 'localhost',
+#             'PORT': '5432',
 #         }
 #     }
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'RentWizDB',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': '',
+        }
+    }
+
+
+# AWS EB Settings
+AWS_QUERYSTRING_AUTH = False
+AWS_ACCESS_KEY_ID = 'AKIAJXCAMHL54GAYEMOA'
+AWS_SECRET_ACCESS_KEY = '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'
 
 AUTH_USER_MODEL = 'UserManagement.RegisteredUser'
 
@@ -164,10 +162,7 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIR = (
-    os.path.join(BASE_DIR, 'static'),
-)
-STATIC_ROOT = 'static'
+STATIC_ROOT = ''
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'

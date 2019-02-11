@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+{% block main_body %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        RentWiz {% block title %}{% endblock %}
+    </title>
+    <meta name="author" content="RentWiz">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'rentalBlock.css' %}">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" />
+    <script src="{% static 'javascript.js' %}"></script>
+    <!--<link rel="shortcut icon" href="/static/images/favicon.ico" type="image/x-icon">-->
+
+    {% block head_extras %}{% endblock %}
+</head>
+
+<body>
+
+<div class="rentalBlock">
+        <h1>Good Choice!</h1>
+        <h4>You are applying to be considered for the following property:</h4>
+        <div class="rentalBlock--img">
+        {% comment %} <img src="{% static 'logo.png' %}" class="logo" /> {% endcomment %}
+        <img src="{% static 'house1.png' %}" alt="can't load"/>
+        </div>
+        <div class="rentalBlock--description">
+            <ul class="rentalBlock--description__list">
+                <li><span>Location:</span>13 Tawa Street</li>
+                <li><span>Available:</span>Tue 5 Feb</li>
+                <li><span>Property ID#:</span>GCG892</li>
+                <li><span>Furnishings:</span></li>
+                <li><span>In the area:</span></li>
+                <li><span>Parking</span></li>
+                <li><span>Idea Tenants</span></li>
+                <li><span>Smoke Alarm:</span></li>
+
+            </ul>
+            <div class="rentalBlock--nextBtn">
+                <a class="nextButton" href="{% url 'addTenants' %}">Next</a>
+{% comment %} 
+              <Link to="/adultprofile">
+                <button class="nextButton">Next</button> {% endcomment %}
+              </Link>
+            </div> 
+            
+        </div>
+      </div>
+    
+      </body>
+        {% endblock %}

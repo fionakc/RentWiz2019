@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    - Home
+    - Test
 {% endblock %}
 
 {% block head_extras %}
@@ -17,6 +17,20 @@
 {% endblock %}
 
 {% block main_body %}
+    <h1>THIS IS TEST PAGE</h1>
+
+    <table>
+    {% for item in queryset %}
+
+
+            <tr>
+                <td>{{ item.id }}</td>
+                <td>{{ item.house_number }}</td>
+            <td>{{ item.street_name }}</td>
+                <td><a href="{% url 'show_artifact_details' item.id %}"><button>LINK</button></a></td>
+        </tr>
+    {% endfor %}
+    </table>
 
 
     <!--- TAGLINE BANNER ---------------------->
