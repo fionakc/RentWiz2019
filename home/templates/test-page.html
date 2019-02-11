@@ -25,7 +25,8 @@
             <td>{{ item.id }}</td>
             <td>{{ item.house_number }}</td>
             <td>{{ item.street_name }}</td>
-            <td><a href="{% url 'show_artifact_details' item.id %}"><button>Apply</button></a></td>
+{#            <td><a href="{% url 'show_artifact_details' item.id %}"><button>Apply</button></a></td>#}
+            <td><a href="{% url 'apply' item.id %}"><button>Apply</button></a></td>
         </tr>
     {% endfor %}
     </table>
