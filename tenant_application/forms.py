@@ -22,10 +22,10 @@ class TenantProfile_part1_Form(forms.Form):
 
     #current_user = request.user
 
-    def save(self, request):
+    def save(self,instance):
         data = self.cleaned_data
         # forms.current_user = request.user
-        tenant = request.user
+        tenant = instance
         tenant.date_of_birth = data['date_of_birth']
         tenant.is_smoker = data['is_smoker']
         tenant.has_pets = data['has_pets']

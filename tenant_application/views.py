@@ -2,7 +2,11 @@ from django.shortcuts import render
 from django.views.generic.edit import UpdateView
 
 from tenant_application.models import Tenant
+from UserManagement.models import Contact
 from .forms import TenantProfile_part1_Form
+from django.contrib.auth import login, authenticate
+from django.shortcuts import render, redirect
+
 
 # Create your views here.
 def apply(request):
@@ -21,21 +25,43 @@ def confirmation(request):
     return render(request, 'confirmation.html')
 
 
-class UpdateTenantProfilePart1(UpdateView):
-    def tenant_profile(request):
-        # return render(request, 'tenantProfile.html')
+# class UpdateTenantProfilePart1(UpdateView):
+#     def tenant_profile(request):
+#         # return render(request, 'tenantProfile.html')
+#
+#         # user_id = request.POST.get('tenant_id')
+#         tenant =
+#
+#         # tenant = Tenant.objects.get(pk=request.GET.get('tenant_id'))
+#         if request.method == 'POST':
+#             form = TenantProfile_part1_Form(request.POST)
+#             if form.is_valid():
+#                 pass
+#                 form.save(request)  #still need this??
+#         else:
+#             form = TenantProfile_part1_Form()
+#
+#         return render(request, 'tenantProfile.html',{'form': form})
 
-        # user_id = request.POST.get('tenant_id')
-        # tenant = Tenant.objects.get(pk=request.GET.get('tenant_id'))
-        if request.method == 'POST':
-            form = TenantProfile_part1_Form(request.POST)
-            if form.is_valid():
-                pass
-                form.save(request)  #still need this??
-        else:
-            form = TenantProfile_part1_Form()
+def updateTenantProfile(request, tenant_id):
+    contact = [x for x in Contact.objects.all() if request.user == x.user][0]
+    tenant = [y for y in Tenant.objects.all() if contact == y.contact][0]
 
-        return render(request, 'tenantProfile.html',{'form': form})
+
+    if request.method == 'POST':
+        form = TenantProfile_part1_Form(request.POST)
+        if form.is_valid():
+            # tenant.is_smoker = form.cleaned_data.get('is_smoker')
+            # tenant.has_pets = form.cleaned_data.get('has_pets')
+            #tenant.save()
+
+            form.save(tenant)  # still need this??
+    else:
+        form = TenantProfile_part1_Form()
+
+    context = {'contact': contact, 'tenant': tenant, 'form': form}
+    return render(request, 'tenantProfile.html', context)
+
 
 # def ProfileView(request):
 #     user_id = request.POST.get('user_id')

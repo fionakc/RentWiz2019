@@ -27,7 +27,11 @@
         <a href="{% url 'home' %}">Home</a>
         <a href="#">Properties</a>
         <a href="#">Search</a>
+        <a href="tenant-profile/{{ user.get_username }}/">Update Profile</a>
+
         <a href="#">Help</a>
+
+
 
         <div class="dropdown">
             <button class="dropbtn">Explore &nbsp;
