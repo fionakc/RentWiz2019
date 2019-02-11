@@ -49,14 +49,14 @@
                 </div>    
           </div>
           <div class="propertyCondition--controlButtons">
-            <Link to="/adultprofile">
-              <ControlButton name="Back"/>
-            </Link>
-
-            <Link to="/propertyconfirmation">
-              <ControlButton name="Agree & Next"/>
-            </Link>
-            
+{#            <Link to="/adultprofile">#}
+{#              <ControlButton name="Back"/>#}
+{#            </Link>#}
+{##}
+{#            <Link to="/propertyconfirmation">#}
+{#              <ControlButton name="Agree & Next"/>#}
+{#            </Link>#}
+            <a class="controlButtons--rightButton" href="{% url 'confirmation' queryset.id %}">Next</a>
           </div>
           
      </div>

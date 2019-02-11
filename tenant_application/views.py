@@ -32,6 +32,9 @@ def conditions(request, id):
     return render(request, 'conditions.html', context)
 
 
-def confirmation(request):
-    return render(request, 'confirmation.html')
+def confirmation(request, id):
+    listing = Listing.objects.get(id=id)
+    context = {'listing': listing,
+               }
+    return render(request, 'confirmation.html', context)
 

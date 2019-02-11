@@ -18,13 +18,16 @@
               <h4 class ="pageSubSubHeading percent">80%</h4>
              </div>
         </div>
-        <h1 class="pageMainHeading">You're nearly there John!</h1>
+        <h1 class="pageMainHeading">You're nearly there, {{ user.get_username }}!</h1>
 
         <div class="confirmationBlock--propertyDetails">
           <div class="confirmationBlock--propertyDetails__detail">
            <h4 class ="pageSubSubHeading">You are applying to be considered for this property</h4>
             
-            <h4 class ="pageSubSubHeading">13 Tawa Street, Tawa</h4>
+            <h4 class ="pageSubSubHeading">{% if listing.property.building_name %}{{ listing.property.building_name }},{% endif %}
+                    {% if listing.property.unit_number %}{{ listing.property.unit_number }}/{% endif %}
+                    {{ listing.property.house_number }} {{ listing.property.street_name }}{% if listing.property.room_number %} (Room number: {{ listing.property.room_number }}),{% endif %}
+                    {% if listing.property.suburb %}{{ listing.property.suburb }},{% endif %} {% if listing.property.city %}{{ listing.property.city }}{% endif %}</h4>
 
             <div class="confirmationBlock--propertyDetails__detail___img">
               <img src="{% static 'house1.png'%}" alt="nothing here"/>
