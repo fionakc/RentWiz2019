@@ -13,8 +13,9 @@
         <h1>Good Choice!</h1>
         <h4>You are applying to be considered for the following property: (id: {{ listing.id }})</h4>
         <div class="rentalBlock--img">
-{#            <img src="{% static 'house1.png' %}" alt="can't load"/>#}
-            <img src="{{ listing.property.property_picture.url }}" alt="{{ listing.description }}"/> {# DOESN"T WORK #}
+            
+            {% if listing.property.property_picture %}<img src="{{ listing.property.property_picture.url }}" alt="{{ listing.description }}"/> {%endif%} {# DOESN"T WORK #}
+            {% comment %} {% elsif %}<img src="{% static 'house1.png' %}" alt="can't load"/>{% endif %} {% endcomment %}
         </div>
         <div class="rentalBlock--description">
             <ul class="rentalBlock--description__list">

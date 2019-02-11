@@ -30,7 +30,7 @@
        
         <div class="applicationStatus100Block--controlButtons">
           <div class="left">
-            <a class="my-nav btn btn-primary" href="{% url 'confirmation' %}" role="button">My Dashboard</a>
+            <a class="my-nav btn btn-primary" href="{% url 'confirmation' listing.id %}" role="button">My Dashboard</a>
 
            
           </div>
@@ -39,7 +39,7 @@
               <ControlButton name="My Dashboard"/>
             </Link>
             <div class="left">
-           <a class="my-nav btn btn-primary" href="{% url 'conditions' %}" role="button">New Application</a>
+           <a class="my-nav btn btn-primary" href="{% url 'conditions' listing.id %}" role="button">New Application</a>
           </div>
           </div>
         </div>

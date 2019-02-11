@@ -7,6 +7,6 @@ urlpatterns=[
     path('conditions/<int:id>', views.conditions, name='conditions'),
     path('confirmation/<int:id>', views.confirmation, name='confirmation'),
     path('addMoreT/<int:id>', views.addMoreT, name='addMoreT'),
-    path('done/', views.done, name='done')
+    path('done/<int:id>', views.done, name='done')
 
 ]

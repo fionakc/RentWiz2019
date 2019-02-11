@@ -39,5 +39,8 @@ def confirmation(request, id):
     return render(request, 'confirmation.html', context)
 
 
-def done(request):
-    return render(request, 'done.html')
+def done(request, id):
+    listing = Listing.objects.get(id=id)
+    context = {'listing': listing,
+               }
+    return render(request, 'done.html', context)
