@@ -18,10 +18,9 @@ from django.urls import include, path
 
 urlpatterns = [
     path('', include('home.urls')),
-    # path('', include('property_listing.urls')),
+    path('', include('property_listing.urls')),
     path('', include('tenant_application.urls')),
     path('users/', include('UserManagement.urls')),
     path('users/', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
-    path('', include('landlord_profile.urls'))
 ]

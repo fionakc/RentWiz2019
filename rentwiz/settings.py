@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'home',
     'property_listing',
     'tenant_application',
-    'landlord_profile',
     'UserManagement.apps.UsersConfig',
     'widget_tweaks',
 ]
