@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from property_listing.models import Property;
+from property_listing.models import Listing;
 from django.http import HttpResponse
 from django.template import RequestContext, Template
 from django.template import loader
@@ -12,16 +13,13 @@ def index(request):
 
 
 # This pulls queryset to manage.py console in Django
-def test(request):
-    qset = Property.objects.all()
-    print(qset)
-    args = qset
-    return render(request, 'test-page.html', {'queryset': args})
-
+def search_listings(request):
+    listings = Listing.objects.all()
+    return render(request, 'test-page.html', {'listings': listings})
 
 
 # VIEW
-def show_artifact_details(request, id):
+def show_property_details(request, id):
 
     qset = Property.objects.get(id=id)
     print(qset)

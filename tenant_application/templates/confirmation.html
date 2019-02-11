@@ -1,27 +1,13 @@
      {% extends "base.html" %}
 {% load static %}
+
+{% block title %}
+    - Confirmation
+{% endblock %}
+
+{% block head_extras %}<link rel="stylesheet" href="{% static 'confirmation.css' %}">{% endblock %}
+
 {% block main_body %}
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>
-        RentWiz {% block title %}{% endblock %}
-    </title>
-    <meta name="author" content="RentWiz">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="{% static 'confirmation.css' %}">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" />
-    <script src="{% static 'javascript.js' %}"></script>
-    <!--<link rel="shortcut icon" href="/static/images/favicon.ico" type="image/x-icon">-->
-
-    {% block head_extras %}{% endblock %}
-</head>
-     
-     <body>     
-     
       <div class="confirmationBlock">
            <div class="progressBar">
              <div class="progressBar--indicator">
@@ -32,13 +18,16 @@
               <h4 class ="pageSubSubHeading percent">80%</h4>
              </div>
         </div>
-        <h1 class="pageMainHeading">Your're nearly there John!</h1>
+        <h1 class="pageMainHeading">You're nearly there, {{ user.get_username }}!</h1>
 
         <div class="confirmationBlock--propertyDetails">
           <div class="confirmationBlock--propertyDetails__detail">
            <h4 class ="pageSubSubHeading">You are applying to be considered for this property</h4>
             
-            <h4 class ="pageSubSubHeading">13 Tawa Street, Tawa</h4>
+            <h4 class ="pageSubSubHeading">{% if listing.property.building_name %}{{ listing.property.building_name }},{% endif %}
+                    {% if listing.property.unit_number %}{{ listing.property.unit_number }}/{% endif %}
+                    {{ listing.property.house_number }} {{ listing.property.street_name }}{% if listing.property.room_number %} (Room number: {{ listing.property.room_number }}),{% endif %}
+                    {% if listing.property.suburb %}{{ listing.property.suburb }},{% endif %} {% if listing.property.city %}{{ listing.property.city }}{% endif %}</h4>
 
             <div class="confirmationBlock--propertyDetails__detail___img">
               <img src="{% static 'house1.png'%}" alt="nothing here"/>
@@ -64,6 +53,4 @@
           </div>
         </div>
       </div>
-
-      </body>
-          {% endblock %}
+{% endblock %}
