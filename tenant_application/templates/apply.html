@@ -8,41 +8,40 @@
 {% block main_body %}
 <div class="rentalBlock">
         <h1>Good Choice!</h1>
-        <h4>You are applying to be considered for the following property: (id: {{ queryset.id }})</h4>
+        <h4>You are applying to be considered for the following property: (id: {{ listing.id }})</h4>
         <div class="rentalBlock--img">
 {#            <img src="{% static 'house1.png' %}" alt="can't load"/>#}
-            <img src="{{ queryset.property_picture.url }}" alt="{{ queryset.description }}"/> {# DOESN"T WORK #}
+            <img src="{{ listing.property.property_picture.url }}" alt="{{ listing.description }}"/> {# DOESN"T WORK #}
         </div>
         <div class="rentalBlock--description">
             <ul class="rentalBlock--description__list">
-                <li><span>Location: </span>{% if queryset.building_name %}{{ queryset.building_name }},{% endif %}
-                    {% if queryset.unit_number %}{{ queryset.unit_number }}/{% endif %}
-                    {{ queryset.house_number }} {{ queryset.street_name }}{% if queryset.room_number %} (Room number: {{ queryset.room_number }}){% endif %},
-                    {% if queryset.suburb %}{{ queryset.suburb }}{% endif %}, {% if queryset.city %}{{ queryset.city }}{% endif %}
+                <li><span>Location: </span>{% if listing.property.building_name %}{{ listing.property.building_name }},{% endif %}
+                    {% if listing.property.unit_number %}{{ listing.property.unit_number }}/{% endif %}
+                    {{ listing.property.house_number }} {{ listing.property.street_name }}{% if listing.property.room_number %} (Room number: {{ listing.property.room_number }}),{% endif %}
+                    {% if listing.property.suburb %}{{ listing.property.suburb }},{% endif %} {% if listing.property.city %}{{ listing.property.city }}{% endif %}
                 </li>
-            {% if queryset.tenancy_services_id %}
-                <li><span>Property ID#: </span>{{ queryset.tenancy_services_id }}</li> {# Tenancy services ID? #}
+            {% if listing.property.tenancy_services_id %}
+                <li><span>Property ID#: </span>{{ listing.property.tenancy_services_id }}</li> {# Tenancy services ID? #}
             {% endif %}
-{#            Available : FK with listing table?#}
-            <li><span>Available: </span></li>
-            {% if queryset.dwelling_type %}
-                <li><span>Dwelling Type: </span>{{ queryset.dwelling_type}}</li>
+            <li><span>Available: </span>{{ listing.start_date }}</li>
+            {% if listing.property.dwelling_type %}
+                <li><span>Dwelling Type: </span>{{ listing.property.dwelling_type}}</li>
             {% endif %}
-            {% if queryset.bedrooms %}
-                <li><span>Bedrooms: </span>{{ queryset.bedrooms}}</li>
+            {% if listing.property.bedrooms %}
+                <li><span>Bedrooms: </span>{{ listing.property.bedrooms}}</li>
             {% endif %}
-            {% if queryset.bathrooms %}
-                <li><span>Bathrooms: </span>{{ queryset.bathrooms}}</li>
+            {% if listing.property.bathrooms %}
+                <li><span>Bathrooms: </span>{{ listing.property.bathrooms}}</li>
             {% endif %}
-            {% if queryset.tenant_capacity %}
-                <li><span>Max. tenants: </span>{{ queryset.tenant_capacity}}</li>
+            {% if listing.property.tenant_capacity %}
+                <li><span>Max. tenants: </span>{{ listing.property.tenant_capacity}}</li>
             {% endif %}
-            {% if queryset.car_spaces %}
-                <li><span>Parking: {% if queryset.car_spaces == 0 %}</span>None</li>{% else %}
-                <li><span>Parking: </span>{{ queryset.car_spaces }}</li>{% endif %}
+            {% if listing.property.car_spaces %}
+                <li><span>Parking: {% if listing.property.car_spaces == 0 %}</span>None</li>{% else %}
+                <li><span>Parking: </span>{{ listing.property.car_spaces }}</li>{% endif %}
             {% endif %}
-            {% if queryset.description %}
-                <li><span>Description: </span>{{ queryset.description}}</li>
+            {% if listing.property.description %}
+                <li><span>Description: </span>{{ listing.property.description}}</li>
             {% endif %}
 
 {#            Things to add to DB#}
@@ -53,7 +52,7 @@
 
             </ul>
             <div class="rentalBlock--nextBtn">
-                <a class="nextButton" href="{% url 'addTenants' queryset.id %}">Next</a>
+                <a class="nextButton" href="{% url 'addTenants' listing.id %}">Next</a>
             </div> 
             
         </div>

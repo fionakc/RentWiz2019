@@ -1,11 +1,12 @@
 from django.shortcuts import render, get_object_or_404
 from PIL import Image
 from property_listing.models import Property;
+from property_listing.models import Listing;
 
 
 def apply(request, id):
-    qset = Property.objects.get(id=id)
-    context = {'queryset': qset,
+    listing = Listing.objects.get(id=id)
+    context = {'listing': listing,
                }
     return render(request, 'apply.html', context)
 
