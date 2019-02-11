@@ -1,6 +1,7 @@
 from django import forms
 
-class LandlordProfileForm(forms.Form):
+
+class ContactProfileForm(forms.Form):
     name = forms.CharField(
         max_length=80
     )
@@ -32,6 +33,8 @@ class LandlordProfileForm(forms.Form):
         max_length=20, required=False,
     )
 
+
+class LandlordProfileForm(ContactProfileForm):
     tenancy_services_id = forms.CharField(
         max_length=8, required=False,
     )
@@ -40,5 +43,8 @@ class LandlordProfileForm(forms.Form):
 
     )
 
-    def save(self):
-        pass
+
+class PropertyManagerProfileForm(ContactProfileForm):
+    # Replace pass statement below with any form fields specific for
+    # a PropertyManager.
+    pass
