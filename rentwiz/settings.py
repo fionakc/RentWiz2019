@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'property_listing',
     'tenant_application',
     'UserManagement.apps.UsersConfig',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -162,6 +163,9 @@ USE_TZ = False
 
 STATIC_URL = '/static/'
 STATIC_ROOT = ''
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = "/media/"
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'

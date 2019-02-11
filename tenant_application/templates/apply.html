@@ -1,57 +1,64 @@
 {% extends "base.html" %}
 {% load static %}
-{% block main_body %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>
-        RentWiz {% block title %}{% endblock %}
-    </title>
-    <meta name="author" content="RentWiz">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'cosmo.css' %}">
+{% block title %}- Apply{% endblock %}
 
+    {% block head_extras %}
+     <link rel="stylesheet" href="{% static 'cosmo.css' %}">
     <link rel="stylesheet" href="{% static 'rentalBlock.css' %}">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" />
-    <script src="{% static 'javascript.js' %}"></script>
-    <!--<link rel="shortcut icon" href="/static/images/favicon.ico" type="image/x-icon">-->
+    {% endblock %}
 
-    {% block head_extras %}{% endblock %}
-</head>
-
-<body>
-
+{% block main_body %}
 <div class="rentalBlock">
         <h1>Good Choice!</h1>
-        <h4>You are applying to be considered for the following property:</h4>
+        <h4>You are applying to be considered for the following property: (id: {{ listing.id }})</h4>
         <div class="rentalBlock--img">
-        {% comment %} <img src="{% static 'logo.png' %}" class="logo" /> {% endcomment %}
-        <img src="{% static 'house1.png' %}" alt="can't load"/>
+{#            <img src="{% static 'house1.png' %}" alt="can't load"/>#}
+            <img src="{{ listing.property.property_picture.url }}" alt="{{ listing.description }}"/> {# DOESN"T WORK #}
         </div>
         <div class="rentalBlock--description">
             <ul class="rentalBlock--description__list">
-                <li><span>Location:</span>13 Tawa Street</li>
-                <li><span>Available:</span>Tue 5 Feb</li>
-                <li><span>Property ID#:</span>GCG892</li>
-                <li><span>Furnishings:</span></li>
-                <li><span>In the area:</span></li>
-                <li><span>Parking</span></li>
-                <li><span>Idea Tenants</span></li>
-                <li><span>Smoke Alarm:</span></li>
+                <li><span>Location: </span>{% if listing.property.building_name %}{{ listing.property.building_name }},{% endif %}
+                    {% if listing.property.unit_number %}{{ listing.property.unit_number }}/{% endif %}
+                    {{ listing.property.house_number }} {{ listing.property.street_name }}{% if listing.property.room_number %} (Room number: {{ listing.property.room_number }}),{% endif %}
+                    {% if listing.property.suburb %}{{ listing.property.suburb }},{% endif %} {% if listing.property.city %}{{ listing.property.city }}{% endif %}
+                </li>
+            {% if listing.property.tenancy_services_id %}
+                <li><span>Property ID#: </span>{{ listing.property.tenancy_services_id }}</li> {# Tenancy services ID? #}
+            {% endif %}
+            <li><span>Available: </span>{{ listing.start_date }}</li>
+            <li><span>{% if listing.payment_frequency %}{{ listing.payment_frequency }}: {% else %}Available: {% endif %}</span>${{ listing.price }}</li>
+            {% if listing.property.dwelling_type %}
+                <li><span>Dwelling Type: </span>{{ listing.property.dwelling_type}}</li>
+            {% endif %}
+            {% if listing.property.bedrooms %}
+                <li><span>Bedrooms: </span>{{ listing.property.bedrooms}}</li>
+            {% endif %}
+            {% if listing.property.bathrooms %}
+                <li><span>Bathrooms: </span>{{ listing.property.bathrooms}}</li>
+            {% endif %}
+            {% if listing.property.tenant_capacity %}
+                <li><span>Max. tenants: </span>{{ listing.property.tenant_capacity}}</li>
+            {% endif %}
+            {% if listing.property.car_spaces %}
+                <li><span>Parking: {% if listing.property.car_spaces == 0 %}</span>None</li>{% else %}
+                <li><span>Parking: </span>{{ listing.property.car_spaces }}</li>{% endif %}
+            {% endif %}
+            {% if listing.property.description %}
+                <li><span>Description: </span>{{ listing.property.description}}</li>
+            {% endif %}
+
+{#            Things to add to DB#}
+{#                <li><span>Furnishings:</span></li>#}
+{#                <li><span>In the area:</span></li>#}
+{#                <li><span>Ideal Tenants: </span></li>#}
+{#                <li><span>Smoke Alarm: </span></li>#}
 
             </ul>
             <div class="rentalBlock--nextBtn">
-            <a class="my-nav btn btn-primary" href="{% url 'addTenants' %}" role="button">Next</a>
-{% comment %} 
-              <Link to="/adultprofile">
-                <button class="nextButton">Next</button> {% endcomment %}
-              </Link>
+                <a class="my-nav btn btn-primary" href="{% url 'addTenants' listing.id %}" role="button">Next</a>
             </div> 
             
         </div>
       </div>
-    
-      </body>
-        {% endblock %}
+{% endblock %}

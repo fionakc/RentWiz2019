@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    - {{ queryset.description }}
+{% endblock %}
+
+{% block head_extras %}
+    <meta name="description" content="this should be a description of what Circa about">
+    <meta name="keywords" content="add some keywords for Search Engine Optimisation">
+    {% load static %}
+    {#    <link rel="stylesheet" href="{% static 'index.css' %}">#}
+{#    <link rel="stylesheet" href="{% static 'loginAndRegister.css' %}">#}
+
+{% endblock %}
+
+{% block page_header %}
+{% endblock %}
+
+
+
+
+{% block main_body %}
+    <div class="div-artifact">
+        <div class="column">
+            <h1>Property Details</h1>
+            <br /><br />
+
+            <h1> {{ queryset.id }}</h1>
+{#            {% for item in queryset %}#}
+{##}
+{##}
+{#            <tr>#}
+{#                <td>{{ item.id }}</td>#}
+{#                <td>{{ item.house_number }}</td>#}
+{#            <td>{{ item.street_name }}</td>#}
+{#                <td><a href="{% url 'show_artifact_details' item.id %}"><button>LINK</button></a></td>#}
+{#        </tr>#}
+{#    {% endfor %}#}
+
+        </div>
+{#            {% if artifact_form.instance.is_disputed %}#}
+{#            <a href="{% url 'review_dispute_on_artifact' artifact_form.instance.id %}" class="button">#}
+{#                Review Dispute#}
+{#            </a>#}
+{#        {% else %}#}
+{#            <a href="{% url 'add_dispute_on_artifact' artifact_form.instance.id %}" class="button">#}
+{#                Add new dispute#}
+{#            </a>#}
+{#        {%  endif %}#}
+
+    </div>
+{% endblock %}
+
+{% block help_section %}#home{% endblock %}
+
+
+
+
+
+

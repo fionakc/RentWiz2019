@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    - Home
+    - Listings
 {% endblock %}
 
 {% block head_extras %}
@@ -17,6 +17,17 @@
 {% endblock %}
 
 {% block main_body %}
+    <h1>Listings</h1>
+
+    <table>
+    {% for listing in listings %}
+        <tr>
+            <td>{{ listing.id }}</td>
+            <td>| {{ listing.description }}</td>
+            <td><a href="{% url 'apply' listing.id %}"><button>Apply</button></a></td>
+        </tr>
+    {% endfor %}
+    </table>
 
 
     <!--- TAGLINE BANNER ---------------------->
