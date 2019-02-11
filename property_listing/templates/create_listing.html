@@ -14,49 +14,141 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous" defer></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous" defer></script>
-
+    <script src="{% static 'javascript.js' %}" defer></script>
 </head>
 <body>
+    <br/>
+    <hr>
+    <br/>
     <div class="container">
-            <br/>
-            <h3>Create a listing</h3>
-            <hr>
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <h3 class="text-center text-success">Create a listing</h3>
+                <br/>
 
-            <!-- Landlord must be logged in -->
-            <form>
-            <!-- Availability + Price -->
-            <h4>Availability</h4>
+                <main class="content" role="content">
+                        <section id="section1" class="card">
+                            <div class="container-fluid">
+                    
+                                <!-- MultiStep Form -->
+                                <form id="regForm"  method="POST" class="post-form">{% csrf_token %}
+                                <!-- One "tab" for each step in the form: -->
+                                <div class="tab">
+                                    <h4 class="py-2 text-center">Availability</h4>
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <label for="availability">Available From</label>
+                                            <input type="date" class="form-control" oninput="this.className = ''" name="availability">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="availability">Available To</label>
+                                            <input type="date" class="form-control" oninput="this.className = ''" name="availability">
+                                        </div>
+                                    </fieldset> 
+                                    <br/>   
+                                    <h4 class="py-2 text-center">Price</h4>
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <label for="availability">Price</label>
+                                            <input type="text" class="form-control" oninput="this.className = ''" placeholder="price">
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <div class="tab">
+                                    <h4 class="py-2 text-center">Location</h4>
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <label for="inputDefault">Room Number</label>
+                                            <input type="text" name="room_number" class="form-control" placeholder="Default input">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputDefault">Unit Number</label>
+                                            <input type="text" name="unit_number" class="form-control" placeholder="Default input">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputDefault">House Number</label>
+                                            <input type="text" class="form-control" placeholder="Default input">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputDefault">Building Name</label>
+                                            <input type="text" class="form-control" placeholder="Default input">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputDefault">Street Name</label>
+                                            <input type="text" class="form-control" placeholder="Default input">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputDefault">Suburb</label>
+                                            <input type="text" class="form-control" placeholder="Default input">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputDefault">City</label>
+                                            <input type="text" class="form-control" placeholder="Default input">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputDefault">Postcode</label>
+                                            <input type="text" class="form-control" placeholder="Default input">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputDefault">Region</label>
+                                            <input type="text" class="form-control" placeholder="Default input">
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <div class="tab">
+                                    <h4 class="py-2 text-center">Property Details</h4>
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <label for="inputDefault">Bedrooms</label>
+                                            <input type="text" name="bedrooms" class="form-control" placeholder="Default input">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputDefault">Bathrooms</label>
+                                            <input type="text" class="form-control" placeholder="Default input">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputDefault">Tenant Capacity</label>
+                                            <input type="text" name="tenant_capacity" class="form-control" placeholder="Default input">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputDefault">Tenant Capacity</label>
+                                            <input type="text" class="form-control" placeholder="Default input">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputDefault">Dwelling Type</label>
+                                            <input type="text" class="form-control" placeholder="Default input">
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <!-- <div class="tab">
+                                    <h4 class="py-2 text-center">Confirm</h4>
+                                    <br/>
+                                </div> -->
+                                <div style="overflow:auto;">
+                                    <div style="float:right;">
+                                    <button type="button" class="btn btn-outline-success" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                                    <button type="button" class="btn btn-success" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                                    </div>
+                                </div>
+                                <!-- Circles which indicates the steps of the form: -->
+                                <div style="text-align:center;margin-top:40px;">
+                                    <span class="step"></span>
+                                    <span class="step"></span>
+                                    <span class="step"></span>
+                                    <span class="step"></span>
+                                </div>
+                                </form>
+                                <!-- /.MultiStep Form -->
+                            </div>
+                        </section>
+                    </main> <!-- /content -->
+                    <br/><br/>
+            </div>
+        </div>
+
+        <br/>
             
-                    <fieldset>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                        </div>
-                    </fieldset>
-                    <fieldset>
-                            <label for="availability">Availability</label>
-                            <input type="date" class="form-control" name="availability">
-                    </fieldset>
-                        
 
-
-            <button type="button" class="btn btn-primary">Next</button>
-            <h4>Price</h4>
-            <button type="button" class="btn btn-outline-primary">Back</button>
-            <button type="button" class="btn btn-primary">Next</button>
-            <!-- Location -->
-            <h4>Location</h4>
-            <button type="button" class="btn btn-outline-primary">Back</button>
-            <button type="button" class="btn btn-primary">Next</button>
-            <!-- Property details -->
-            <h4>Property Details</h4>
-            <button type="button" class="btn btn-outline-primary">Back</button>
-            <button type="button" class="btn btn-primary">Next</button>
-            
-            <!-- Review Details + submit -->
-
-            </form>
     </div>
 
 
