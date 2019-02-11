@@ -15,3 +15,6 @@ def conditions(request):
 
 def confirmation(request):
     return render(request, 'confirmation.html')
+
+def done(request):
+    return render(request, 'done.html')

@@ -10,12 +10,16 @@
     margin-bottom: 2em;
 }
 
-.rentalBlock h1 {
+/* .rentalBlock h1 {
     margin: 0.25em auto;
-    /* color: red; */
     color: #47525E;
     font-size: 3.0em;
-}
+} */
+
+ .rentalBlock h1 {
+text-align: center;
+color: #47525E;
+} 
 
 .rentalBlock h4 {
     font-weight: 400;
@@ -55,6 +59,14 @@
     display: grid;
     width: 100%;
     align-items: end;
+}
+
+.my-nav{
+    padding:5%;
+    margin: 0% 20% 20% 20%;
+    background-color: #008001;
+    border-radius: 5%; 
+    text-align: center;
 }
 
 .nextButton {

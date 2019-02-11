@@ -11,7 +11,7 @@
     </title>
     <meta name="author" content="RentWiz">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link rel="stylesheet" href="{% static 'cosmo.css' %}">
     <link rel="stylesheet" href="{% static 'propertyConditions.css' %}">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" />
     <script src="{% static 'javascript.js' %}"></script>
@@ -22,7 +22,9 @@
      
      <body>
       <div class="propertyConditions">
-          <ProgressBar percent="60"/>
+         <div class="progress">
+  <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
           <h1>
             Are you aware of the below Duties & Conditions of this property?
           </h1>
@@ -44,7 +46,10 @@
                         <li>Yup, another list item</li>
                         <li>Yup, another list item</li>
                     </ol>
-                    <FormCheckbox label="I accept"/>
+                      <div class="custom-control custom-checkbox">
+      <input type="checkbox" class="custom-control-input" id="customCheck1" checked="">
+      <label class="custom-control-label" for="customCheck1">I accept</label>
+                </div>
                 </div>
                 </div>
                 <div class="propertyCondition--block_list__item">
@@ -61,18 +66,23 @@
                       <li>This is a list item</li>
                     </ol>
                     <div>
-                    <FormCheckbox label="I accept"/>
+                     <div class="form-group">
+    <div class="custom-control custom-checkbox">
+      <input type="checkbox" class="custom-control-input" id="customCheck1" checked="">
+      <label class="custom-control-label" for="customCheck1">I accept</label>
+    </div>
+    
+  </div>
                     </div>
                 </div>    
           </div>
+          
           <div class="propertyCondition--controlButtons">
-            <Link to="/adultprofile">
-              <ControlButton name="Back"/>
-            </Link>
+            <a class="my-nav btn btn-primary" href="{% url 'addTenants' %}" role="button">Back</a>
 
-            <Link to="/propertyconfirmation">
-              <ControlButton name="Agree & Next"/>
-            </Link>
+
+            <a class="my-nav btn btn-primary" href="{% url 'confirmation' %}" role="button">Next</a>
+
             
           </div>
           

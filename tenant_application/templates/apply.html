@@ -11,6 +11,7 @@
     </title>
     <meta name="author" content="RentWiz">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'cosmo.css' %}">
 
     <link rel="stylesheet" href="{% static 'rentalBlock.css' %}">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" />
@@ -42,7 +43,7 @@
 
             </ul>
             <div class="rentalBlock--nextBtn">
-                <a class="nextButton" href="{% url 'addTenants' %}">Next</a>
+            <a class="my-nav btn btn-primary" href="{% url 'addTenants' %}" role="button">Next</a>
 {% comment %} 
               <Link to="/adultprofile">
                 <button class="nextButton">Next</button> {% endcomment %}
