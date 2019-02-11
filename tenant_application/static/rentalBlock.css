@@ -53,21 +53,26 @@
 .rentalBlock--nextBtn {
     height: 100%;
     display: grid;
+    width: 100%;
     align-items: end;
 }
 
 .nextButton {
+    
     color: #fff;
     font-size: large;
     letter-spacing: 2px;
     font-family: 'Lato', sans-serif;
+    text-align: center;
     font-weight: 400;
+    margin-left: 50px;
+    height: 50.68px;
     margin-bottom: 50px;
+    padding: 0%;
     background-color: #008001;
     border-radius: 5px;
     width: 120%;
-    margin-left: 50px;
-    height: 50.68px;
+   
     cursor: pointer;
     border-color: transparent;
 }
