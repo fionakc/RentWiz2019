@@ -10,8 +10,11 @@ def apply(request, id):
     return render(request, 'apply.html', context)
 
 
-def addTenants(request):
-    return render(request, 'addTenants.html')
+def addTenants(request, id):
+    qset = Property.objects.get(id=id)
+    context = {'queryset': qset,
+               }
+    return render(request, 'addTenants.html', context)
 
 
 def addMoreT(request):
