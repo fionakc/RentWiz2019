@@ -12,18 +12,24 @@ def apply(request, id):
 
 
 def addTenants(request, id):
-    qset = Property.objects.get(id=id)
+    qset = Listing.objects.get(id=id)
     context = {'queryset': qset,
                }
     return render(request, 'addTenants.html', context)
 
 
-def addMoreT(request):
-    return render(request, 'addMoreT.html')
+def addMoreT(request, id):
+    qset = Listing.objects.get(id=id)
+    context = {'queryset': qset,
+               }
+    return render(request, 'addMoreT.html', context)
 
 
-def conditions(request):
-    return render(request, 'conditions.html')
+def conditions(request, id):
+    qset = Listing.objects.get(id=id)
+    context = {'queryset': qset,
+               }
+    return render(request, 'conditions.html', context)
 
 
 def confirmation(request):

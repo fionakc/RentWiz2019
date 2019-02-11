@@ -68,7 +68,7 @@
          </div>
 
         <div class="controlButtons">
-         <a class="controlButtons--leftButton button" href="{% url 'AddTenants' %}">Back</a>
+         <a class="controlButtons--leftButton button" href="{% url 'addTenants' queryset.id %}">Back</a>
             {% comment %} <Link to='/'>
                 <div class="controlButtons--leftButton">
                     <ControlButton name="Back"/>
@@ -76,13 +76,13 @@
             </Link> {% endcomment %}
 
             <div class="controlButtons--centerButton">
-            <a class="controlButtons--centerButton" href="{% url 'addMore' %}">Add More Tenants</a>
+            <a class="controlButtons--centerButton" href="{% url 'addMoreT' queryset.id %}">Add More Tenants</a>
 
                 {% comment %} <ControlButton name="Add More People"/> {% endcomment %}
             </div>
             <Link to="/propertyconditions">
                 <div class="controlButtons--rightButton">
-                <a class="controlButtons--centerButton" href="{% url 'conditions' %}">Next</a>
+                <a class="controlButtons--centerButton" href="{% url 'conditions' queryset.id %}">Next</a>
 
                     <ControlButton name="Next"/>
                 </div>
