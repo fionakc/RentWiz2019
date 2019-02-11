@@ -24,6 +24,7 @@
                 <li><span>Property ID#: </span>{{ listing.property.tenancy_services_id }}</li> {# Tenancy services ID? #}
             {% endif %}
             <li><span>Available: </span>{{ listing.start_date }}</li>
+            <li><span>{% if listing.payment_frequency %}{{ listing.payment_frequency }}: {% else %}Available: {% endif %}</span>${{ listing.price }}</li>
             {% if listing.property.dwelling_type %}
                 <li><span>Dwelling Type: </span>{{ listing.property.dwelling_type}}</li>
             {% endif %}
