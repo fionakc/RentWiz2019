@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from property_listing.models import Listing
 from UserManagement.models import Contact
+from django.db.models.signals import post_save
 
 
 class Tenant(models.Model):
