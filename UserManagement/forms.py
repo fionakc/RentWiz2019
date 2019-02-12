@@ -30,23 +30,29 @@ class ContactCreationForm(forms.Form):
     )
     address_line2 = forms.CharField(
         max_length=80,
+        required=False
     )
     address_line3 = forms.CharField(
         max_length=80,
+        required=False
     )
     home_phone = forms.CharField(
         max_length=20,
+        required=False
     )
     work_phone = forms.CharField(
         max_length=20,
+        required=False
     )
     mobile_phone = forms.CharField(
         max_length=20,
+        required=False
     )
     #photo = forms.ImageField()
     password1 = forms.CharField(
         max_length=20,
     )
+
 
 
 
