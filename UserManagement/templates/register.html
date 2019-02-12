@@ -18,8 +18,12 @@
     {% else %}
 
 
-        <div class="Login">
-        <div class="Login__Aside"></div>
+    <div class="Login">
+        <div class="Login__Aside">
+            <div class="img">
+                <img class="img" src="{% static 'signup.jpg' %}" width="200" height="200"  alt="signup" />
+        </div>
+    </div>
         <div class="Login__Form">
 
         <div class="FormTitle">
@@ -30,11 +34,11 @@
         </div>
 
         <div class="FormTitle">
-            as a <a
+            as a <a onclick="img1()"
                 class="FormTitle__Link{% if request.path == '/users/register/tenant' %} FormTitle__Link--Active{% endif %}"
-                href="{% url 'register_tenant' %}">Tenant</a> or <a
+                href="{% url 'register_tenant' %}">Tenant</a> or <a onclick="img2()"
                 class="FormTitle__Link{% if request.path == '/users/register/landlord' %} FormTitle__Link--Active{% endif %}"
-                href="{% url 'register_landlord' %}">Landlord</a>or <a
+                href="{% url 'register_landlord' %}">Landlord</a>or <a onclick="img3()"
                 class="FormTitle__Link{% if request.path == '/users/register/propertymanager' %} FormTitle__Link--Active{% endif %}"
                 href="{% url 'register_propertymanager' %}">Property Manager</a>
         </div>

@@ -30,18 +30,23 @@ class ContactCreationForm(forms.Form):
     )
     address_line2 = forms.CharField(
         max_length=80,
+        required=False
     )
     address_line3 = forms.CharField(
         max_length=80,
+        required=False
     )
     home_phone = forms.CharField(
         max_length=20,
+        required=False
     )
     work_phone = forms.CharField(
         max_length=20,
+        required=False
     )
     mobile_phone = forms.CharField(
         max_length=20,
+        required=False
     )
     #photo = forms.ImageField()
     password1 = forms.CharField(
@@ -49,34 +54,6 @@ class ContactCreationForm(forms.Form):
     )
 
 
-
-class LandlordCreationForm(forms.Form):
-    user = forms.CharField(
-        max_length=80
-    )
-    name = forms.CharField(
-        max_length=80
-    )
-    email = forms.EmailField()
-    address_line1 = forms.CharField(
-        max_length=80
-    )
-    address_line2 = forms.CharField(
-        max_length=80
-    )
-    address_line3 = forms.CharField(
-        max_length=80
-    )
-    home_phone = forms.CharField(
-        max_length=20
-    )
-    work_phone = forms.CharField(
-        max_length=20
-    )
-    mobile_phone = forms.CharField(
-        max_length=20
-    )
-    # photo = forms.ImageField()
 
 
 class PropertyManagerCreationForm(ContactCreationForm):
@@ -88,20 +65,24 @@ class PropertyManagerCreationForm(ContactCreationForm):
 
         user.set_password(data["password1"])
         user.save()
+
         contact = Contact(user=user,
                           name=data['name'],
                           email=data['email'],
                           address_line1=data['address_line1'],
-                          address_line2=data['address_line2'],
-                          address_line3=data['address_line3'],
-                          home_phone=data['home_phone'],
-                          work_phone=data['work_phone'],
-                          mobile_phone=data['mobile_phone'],
-                          #photo=data['photo'],
-        )
+                          )
+
+        contact.address_line2 = data['address_line2']
+        contact.address_line3 = data['address_line3']
+        contact.home_phone = data['home_phone']
+        contact.work_phone = data['work_phone']
+        contact.mobile_phone = data['mobile_phone']
         contact.save()
+
         property_manager = PropertyManager(contact=contact)
         property_manager.save()
+
+        return user
 
 
 
@@ -114,19 +95,20 @@ class TenantCreationForm(ContactCreationForm):
 
         user.set_password(data["password1"])
         user.save()
+
         contact = Contact(user=user,
                           name=data['name'],
                           email=data['email'],
                           address_line1=data['address_line1'],
+                          )
 
-                        address_line2=data['address_line2'],
-                          address_line3=data['address_line3'],
-                          home_phone=data['home_phone'],
-                          work_phone=data['work_phone'],
-                          mobile_phone=data['mobile_phone'],
-                          #photo=data['photo'],
-        )
+        contact.address_line2 = data['address_line2']
+        contact.address_line3 = data['address_line3']
+        contact.home_phone = data['home_phone']
+        contact.work_phone = data['work_phone']
+        contact.mobile_phone = data['mobile_phone']
         contact.save()
+
         tenant = Tenant(contact=contact,
                         legal_name=data['name'],
                         is_18_plus=True,)  #using these two values to get the form to also save to tenants, should have own fields on form
@@ -135,3 +117,34 @@ class TenantCreationForm(ContactCreationForm):
         tenant.save()
         return user
 
+class LandlordCreationForm(ContactCreationForm):
+
+    tenancy_services_id = forms.CharField(
+        required=False
+    )
+
+    def save(self):
+        data = self.cleaned_data
+        user = RegisteredUser(username=data['registered_username'])
+        user.set_password(data["password1"])
+        user.save()
+
+        contact = Contact(user=user,
+                          name=data['name'],
+                          email=data['email'],
+                          address_line1=data['address_line1'],
+                          )
+
+        contact.address_line2 = data['address_line2']
+        contact.address_line3 = data['address_line3']
+        contact.home_phone = data['home_phone']
+        contact.work_phone = data['work_phone']
+        contact.mobile_phone = data['mobile_phone']
+        contact.save()
+
+        landlord = Landlord(contact=contact,
+                        is_first_timer=True, )
+        landlord.tenancy_services_id = data['tenancy_services_id']
+        landlord.save()
+
+        return user
