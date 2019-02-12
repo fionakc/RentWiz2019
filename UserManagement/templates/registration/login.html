@@ -12,8 +12,11 @@
 {% endblock %}
 
 {% block main_body %}
-    <div class="Login">
-        <div class="Login__Aside"></div>
+<div class="Login">
+    <div class="Login__Aside">
+        <img class="img" src="{% static 'home1.jpeg' %}"  alt="home1" />
+       
+    </div>
         <div class="Login__Form">
 
             {% if user.is_authenticated %}
