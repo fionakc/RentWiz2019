@@ -9,6 +9,12 @@ class PostForm(forms.ModelForm):
         fields = ('room_number', 'unit_number', 'bedrooms', 'tenant_capacity')
 
 
+class AddPropertyForLandlordForm(forms.ModelForm):
+    class Meta:
+        model = Property
+        exclude = ('landlord',)
+
+
 class ContactProfileForm(forms.Form):
     name = forms.CharField(
         max_length=80
