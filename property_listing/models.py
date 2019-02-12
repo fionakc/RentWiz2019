@@ -125,7 +125,7 @@ class Listing(models.Model):
     price = models.DecimalField(max_digits=9,
                                 decimal_places=2,
                                 default='0')
-# Following field names were in 2018 ERM diagram.
+    # Following field names were in 2018 ERM diagram.
     # price_low = models.DecimalField(max_digits=9, decimal_places=2)
     # price_high = models.DecimalField(max_digits=9, decimal_places=2)
     payment_frequency = models.CharField(max_length=20, default='')
