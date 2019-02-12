@@ -5,18 +5,23 @@
     - Confirmation
 {% endblock %}
 
-{% block head_extras %}<link rel="stylesheet" href="{% static 'confirmation.css' %}">{% endblock %}
+{% block head_extras %}
+ <link rel="stylesheet" href="{% static 'cosmo.css' %}">
+<link rel="stylesheet" href="{% static 'confirmation.css' %}">{% endblock %}
 
 {% block main_body %}
       <div class="confirmationBlock">
-           <div class="progressBar">
+           {% comment %} <div class="progressBar">
              <div class="progressBar--indicator">
                 <span style = "width: 80%"></span>
              </div>
              <div class="progressBar--percent">
              <h4 class ="pageSubSubHeading status">Application Status</h4>
               <h4 class ="pageSubSubHeading percent">80%</h4>
-             </div>
+             </div> {% endcomment %}
+             <div class="progress">
+  <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
         </div>
         <h1 class="pageMainHeading">You're nearly there, {{ user.get_username }}!</h1>
 
@@ -41,14 +46,10 @@
         </div>
         <div class="confirmationBlock--controlButtons">
           <div class="left">
-            <Link to="/adultprofile">
-              <ControlButton name="Edit"/>
-            </Link>
+           <a class="my-nav btn btn-primary" href="{% url 'conditions' listing.id %}" role="button">Back</a>
           </div>
           <div class="right">
-            <Link to="/applicationsuccess">
-             <ControlButton name="Confirm"/>
-            </Link>
+             <a class="my-nav btn btn-primary" href="{% url 'done' listing.id %}" role="button">Next</a>
           
           </div>
         </div>
