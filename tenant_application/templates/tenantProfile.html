@@ -27,6 +27,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous" defer></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous" defer></script>
     <script src="{% static 'javascript.js' %}" defer></script>
+    <script src="{% static 'tenantformUX.js' %}"></script>
+{#    need this line above??#}
 </head>
 <body>
     <br/>
@@ -51,55 +53,143 @@
                                     <fieldset>
                                         <div class="form-group">
                                             <label for="availability">Date of birth</label>
-                                            <input type="date" class="form-control" oninput="this.className = ''" name="date_of_birth">
+                                            <input type="date" class="form-control" oninput="this.className = ''" {{ tenant.date_of_birth }} name="date_of_birth">
                                         </div>
+                                        {% if tenant.is_smoker %}
                                         <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck1" name="is_smoker">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1" name="is_smoker" checked=True>
                                         <label class="custom-control-label" for="customCheck1">Do you smoke?</label>
                                         </div>
+                                        {% else %}
+                                            <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1" name="is_smoker" >
+                                        <label class="custom-control-label" for="customCheck1">Do you smoke?</label>
+                                        </div>
+                                        {% endif %}
+
+
+                                        {% if tenant.has_pets %}
                                         <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck2" name="has_pets" checked=True>
+                                        <label class="custom-control-label" for="customCheck2">Do you have pet/s?</label> {{ tenant.has_pets }}
+                                        </div>
+                                        {% else %}
+                                            <div class="custom-control custom-checkbox">
                                         <input type="checkbox" class="custom-control-input" id="customCheck2" name="has_pets" >
                                         <label class="custom-control-label" for="customCheck2">Do you have pet/s?</label>
                                         </div>
+                                        {% endif %}
+
+                                        {% if tenant.is_first_timer %}
                                         <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck3" name="is_first_timer" checked=True>
+                                        <label class="custom-control-label" for="customCheck3">Have you been a tenant before?</label>
+                                        </div>
+                                            {% else %}
+                                            <div class="custom-control custom-checkbox">
                                         <input type="checkbox" class="custom-control-input" id="customCheck3" name="is_first_timer">
                                         <label class="custom-control-label" for="customCheck3">Have you been a tenant before?</label>
                                         </div>
+                                            {% endif %}
+
+{# this block wasn't saving to the db properly, so removed and left as original#}
+{#                                        {% if tenant.vehicle_registration %}#}
+{#                                        <div class="custom-control custom-checkbox">#}
+{#                                        <input type="checkbox" class="custom-control-input"    id="tickvehicle" checked=True>#}
+{#                                            <script>vehicle()</script>#}
+{#                                        <label class="custom-control-label" for="tickvehicle">Do you have a vehicle?</label>#}
+{##}
+{#                                            <div id="havevehicle" style="display: none">#}
+{#                                            <div class="form-group">#}
+{#                                            <label for="inputDefault">Vehicle registration number</label>#}
+{#                                            <input type="text" name="vehicle_type" class="form-control" placeholder={{ tenant.vehicle_registration }} >#}
+{#                                            </div>#}
+{#                                                {% if tenant.vehicle_make_and_model %}#}
+{#                                            <div class="form-group">#}
+{#                                            <label for="inputDefault">#}
+{#                                            Vehicle make and model</label>#}
+{#                                            <input type="text" name="vehicle_make_and_model" class="form-control" placeholder={{ tenant.vehicle_make_and_model }}>#}
+{#                                            </div>#}
+{#                                                    {% else %}#}
+{#                                                    <div class="form-group">#}
+{#                                            <label for="inputDefault">#}
+{#                                            Vehicle make and model</label>#}
+{#                                            <input type="text" name="vehicle_make_and_model" class="form-control" placeholder="Vehicle make and model">#}
+{#                                            </div>#}
+{#                                                    {% endif %}#}
+{##}
+{#                                        </div>#}
+{#                                        </div>#}
+{#                                        {% elif tenant.vehicle_make_and_model %}#}
+{#                                            <div class="custom-control custom-checkbox">#}
+{#                                        <input type="checkbox" class="custom-control-input"  id="tickvehicle" checked=True >#}
+{#                                            <script>vehicle()</script>#}
+{#                                        <label class="custom-control-label" for="tickvehicle">Do you have a vehicle?</label>#}
+{##}
+{#                                            <div id="havevehicle" style="display: none">#}
+{#                                            {% if tenant.vehicle_registration %}#}
+{#                                            <div class="form-group">#}
+{#                                            <label for="inputDefault">Vehicle registration number</label>#}
+{#                                            <input type="text" name="vehicle_type" class="form-control" placeholder={{ tenant.vehicle_registration }} >#}
+{#                                            </div>#}
+{#                                                {% else %}#}
+{#                                                <div class="form-group">#}
+{#                                            <label for="inputDefault">Vehicle registration number</label>#}
+{#                                            <input type="text" name="vehicle_type" class="form-control" placeholder="Vehicle rego" >#}
+{#                                            </div>#}
+{#                                                {% endif %}#}
+{##}
+{#                                            <div class="form-group">#}
+{#                                            <label for="inputDefault">#}
+{#                                            Vehicle make and model</label>#}
+{#                                            <input type="text" name="vehicle_make_and_model" class="form-control" placeholder={{ tenant.vehicle_make_and_model }}>#}
+{#                                            </div>#}
+{##}
+{##}
+{##}
+{#                                        </div>#}
+{#                                        </div>#}
+{##}
+{#                                            {% else %}#}
                                         <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" onclick="vehicle()" id="tickvehicle" >
+                                        <input type="checkbox" class="custom-control-input" onclick="vehicle()" id="tickvehicle">
                                         <label class="custom-control-label" for="tickvehicle">Do you have a vehicle?</label>
-                                        </div>
-                                        <div id="havevehicle" style="display: none">
+
+                                            <div id="havevehicle" style="display: none">
                                             <div class="form-group">
                                             <label for="inputDefault">Vehicle registration number</label>
-                                            <input type="text" name="vehicle_type" class="form-control" placeholder="Default input" >
+                                            <input type="text" name="vehicle_type" class="form-control" placeholder="Vehicle rego" >
                                             </div>
                                             <div class="form-group">
                                             <label for="inputDefault">
                                             Vehicle make and model</label>
-                                            <input type="text" name="vehicle_make_and_model" class="form-control" placeholder="Default input">
+                                            <input type="text" name="vehicle_make_and_model" class="form-control" placeholder="Vehicle make and model">
                                             </div>
 
                                         </div>
 
+                                        </div>
+{#                                        {% endif %}#}
+
+
                                     </fieldset>
                                     <br/>
                                 </div>
-                                <script>
-                                    function vehicle() {
-                                        var checkBox = document.getElementById("tickvehicle");
-                                        // Get the output text
-                                        var vehicleform = document.getElementById("havevehicle");
-                                        // If the checkbox is checked, display the output text
-                                        if (checkBox.checked == true) {
-                                            vehicleform.style.display = "block";
-                                        }
-                                        if (checkBox.checked == false) {
-                                            vehicleform.style.display = "none";
-                                        }
-                                    }
-
-                                </script>
+{#                                <script>#}
+{#                                    function vehicle() {#}
+{#                                        var checkBox = document.getElementById("tickvehicle");#}
+{#                                        // Get the output text#}
+{#                                        var vehicleform = document.getElementById("havevehicle");#}
+{#                                        // If the checkbox is checked, display the output text#}
+{#                                        if (checkBox.checked == true) {#}
+{#                                            vehicleform.style.display = "block";#}
+{#                                        }#}
+{#                                        if (checkBox.checked == false) {#}
+{#                                            vehicleform.style.display = "none";#}
+{#                                        }#}
+{#                                    }#}
+{##}
+{#                                </script>#}
                                 <div class="tab">
                                     <h4 class="text-center " style="color:#4CAF50"><i class="material-icons icondown">verified_user</i> Verified
                                 Identification</h4>

@@ -31,11 +31,13 @@ function vehicle() {
 function verifyCheckcar() {
     document.getElementById('driverfill').style.display = 'block';
     document.getElementById('passportfill').style.display = 'none';
+//    need to turn off other radio button if this one is clicked
 }
 
 function verifyCheckpass() {
     document.getElementById('passportfill').style.display = 'block';
     document.getElementById('driverfill').style.display = 'none';
+//    ditto down here
 }
 
 
