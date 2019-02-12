@@ -54,7 +54,7 @@ def landlord_profile(request, landlord_id):
     else:
         form = LandlordProfileForm(initial=initial_landlord_data)
 
-    context = {'form': form, 'properties': properties}
+    context = {'form': form, 'properties': properties, 'landlord_id': landlord_id}
     return render(request, 'landlord_profile.html', context)
 
 
