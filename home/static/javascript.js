@@ -57,6 +57,8 @@ function fixStepIndicator(n) {
   //... and adds the "active" class on the current step:
   x[n].className += " active";
 }
+
+
 var img1 = document.getElementById("img11");
   var img2 = document.getElementById("img22");
   var img3 = document.getElementById("img22");
