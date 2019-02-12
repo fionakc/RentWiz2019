@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404, redirect, render
-from .forms import (AddPropertyForLandlordForm, PostForm, LandlordProfileForm,
+from django.utils import timezone
+from .forms import (AddListingForm, AddPropertyForLandlordForm, PostForm, LandlordProfileForm,
                     PropertyManagerProfileForm)
 from .models import Landlord, Listing, Property, PropertyManager
 from UserManagement.models import Contact
@@ -97,7 +98,9 @@ def property_manager_profile(request, property_manager_id):
 
 def add_property_for_landlord(request, landlord_id):
     landlord = get_object_or_404(Landlord, id=landlord_id)
-    property = Property.objects.create(landlord=landlord)
+    property = Property.objects.create(landlord=landlord,
+                                       bedrooms=0,
+                                       tenant_capacity=0)
     # Note this always creates a new property when the page is called.
     # We should do something better, but ugly works for now.
 
@@ -114,4 +117,18 @@ def add_property_for_landlord(request, landlord_id):
 
 
 def add_listing(request, property_id):
-    pass
+    property = get_object_or_404(Property, id=property_id)
+    listing = Listing.objects.create(property=property,
+                                     start_date=timezone.now())
+    # Note this always creates a new listing when the page is called.
+    # We should do something better, but ugly works for now.
+
+    if request.method == 'POST':
+        form = (request.POST)
+        if form.is_valid():
+            form.save()
+    else:
+        form = AddListingForm(instance=listing)
+
+    context = {'form': form}
+    return render(request, 'add_listing.html', context)

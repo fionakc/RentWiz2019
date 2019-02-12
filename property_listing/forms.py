@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Property
+from .models import Landlord, Listing, Property
 
 class PostForm(forms.ModelForm):
 
@@ -13,6 +13,12 @@ class AddPropertyForLandlordForm(forms.ModelForm):
     class Meta:
         model = Property
         exclude = ('landlord',)
+
+
+class AddListingForm(forms.ModelForm):
+    class Meta:
+        model = Listing
+        exclude = ('property',)
 
 
 class ContactProfileForm(forms.Form):
