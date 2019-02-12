@@ -8,4 +8,16 @@
 
 {% block main_body %}
 
+
+    <form method="post">
+            {% csrf_token %}
+
+            {{ form.as_table }}
+            <div class="">
+                <button type="submit" class="">Add Property</button>
+            </div>
+
+    </form>
+
+
 {% endblock %}
