@@ -1,6 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.http import request
 
+
 from .models import Contact
 from property_listing.models import Landlord, PropertyManager
 from tenant_application.models import Tenant, Reference, Application
@@ -10,7 +11,9 @@ from django import forms
 class TenantProfile_part1_Form(forms.Form):
 
     date_of_birth = forms.DateField(
-        required=False
+        required=False,
+        #help_text='yyyy-mm-dd'
+        widget=forms.TextInput(attrs={'placeholder': 'yyyy-mm-dd'}),
     )
 
     is_smoker = forms.BooleanField(
@@ -19,6 +22,45 @@ class TenantProfile_part1_Form(forms.Form):
     has_pets = forms.BooleanField(
         required=False
     )
+
+    id_type_choices = (('1','Drivers License'),('2','Passport'),('3','Other'))
+
+    identification_type = forms.ChoiceField(
+        # max_length=20,
+        required=False,
+        choices=id_type_choices,
+        widget=forms.RadioSelect,
+    )
+
+
+    identification_number = forms.CharField(
+        # It doesn't have to be a number.
+        # For a drivers license you could add classification too
+        max_length=40,
+        required=False,
+    )
+
+    vehicle_registration = forms.CharField(
+        max_length=10,
+        required=False,
+    )
+    vehicle_make_and_model = forms.CharField(
+        max_length=80,
+        required=False,
+        widget=forms.TextInput(attrs={'placeholder':'Please enter'}),
+        # label=_(u'Text'),
+    )
+
+
+    is_first_timer = forms.BooleanField(required=False)
+    has_children = forms.BooleanField(required=False)
+
+    #free text area:
+    comments = forms.CharField(
+        required=False,
+        widget=forms.Textarea(),
+    )
+
 
     #current_user = request.user
 
@@ -30,72 +72,12 @@ class TenantProfile_part1_Form(forms.Form):
         tenant.is_smoker = data['is_smoker']
         tenant.has_pets = data['has_pets']
 
+        #tenant.identification_type = data['identification_type']
+        tenant.identification_number = data['identification_number']
+        tenant.vehicle_registration = data['vehicle_registration']
+        tenant.vehicle_make_and_model = data['vehicle_make_and_model']
+        tenant.is_first_timer = data['is_first_timer']
+        tenant.has_children = data['has_children']
+        tenant.comments = data['comments']
 
-        # tenant = Tenant(legal_name= "bob",
-        #                 is_18_plus=True,
-        #     date_of_birth = data['date_of_birth'],
-        #     is_smoker = data['is_smoker'],
-        #     has_pets = data['has_pets'])
-        tenant.save()
 
-
-    # date_of_birth = forms.DateField()
-    #
-    # is_smoker = forms.BooleanField()
-    #
-    # has_pets = forms.BooleanField()
-
-# class PropertyManagerCreationForm(ContactCreationForm):
-#     pass
-#
-#     def save(self):
-#         data = self.cleaned_data
-#         user = RegisteredUser(username=data['registered_username'])
-#
-#         user.set_password(data["password1"])
-#         user.save()
-#         contact = Contact(user=user,
-#                           name=data['name'],
-#                           email=data['email'],
-#                           address_line1=data['address_line1'],
-#                           address_line2=data['address_line2'],
-#                           address_line3=data['address_line3'],
-#                           home_phone=data['home_phone'],
-#                           work_phone=data['work_phone'],
-#                           mobile_phone=data['mobile_phone'],
-#                           #photo=data['photo'],
-#         )
-#         contact.save()
-#         property_manager = PropertyManager(contact=contact)
-#         property_manager.save()
-
-# class ContactCreationForm(forms.Form):
-#     registered_username = forms.CharField(
-#         max_length=80
-#     )
-#     name = forms.CharField(
-#         max_length=80
-#     )
-#     email = forms.EmailField()
-#     address_line1 = forms.CharField(
-#         max_length=80
-#     )
-#     address_line2 = forms.CharField(
-#         max_length=80,
-#     )
-#     address_line3 = forms.CharField(
-#         max_length=80,
-#     )
-#     home_phone = forms.CharField(
-#         max_length=20,
-#     )
-#     work_phone = forms.CharField(
-#         max_length=20,
-#     )
-#     mobile_phone = forms.CharField(
-#         max_length=20,
-#     )
-#     #photo = forms.ImageField()
-#     password1 = forms.CharField(
-#         max_length=20,
-#     )
