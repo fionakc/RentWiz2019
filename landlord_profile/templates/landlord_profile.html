@@ -1,0 +1,61 @@
+
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+{% load widget_tweaks %}
+
+{% block page_header %}
+<link rel="stylesheet" href="{% static 'landlord_profile.css' %}">
+<link rel="stylesheet" href="{% static 'cosmo.css' %}">
+{% endblock %}
+
+{% block main_body %}
+    <div class="landlordDetails">
+        <h1 class="landlordHeader">Landlord Profile<img class="editBtn" src="{% static 'editicon.png'%}" alt="edit" /></h1>
+            <img class="landlordImage" src="https://www.atomix.com.au/media/2015/06/atomix_user31.png" alt="landlordProfile" />
+            <fieldset>
+                    <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="name" class="form-control" id="name" placeholder="Enter name">
+                    </div>    
+                    <div class="form-group">
+                            <label for="cName">Company Name</label>
+                            <input type="cName" class="form-control" id="cName" placeholder="Enter company name">
+                    </div>  
+                    <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="phone" class="form-control" id="phone" placeholder="Enter phone number">
+                    </div>  
+                    <div class="form-group">
+                            <label for="fax">Fax</label>
+                            <input type="fax" class="form-control" id="fax" placeholder="Enter fax number">
+                    </div>  
+                    <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter email">
+                    </div>  
+                    <div class="form-group">
+                            <label for="address">Address</label>
+                            <input type="address" class="form-control" id="address" placeholder="Enter address">
+                    </div> 
+                    <div class="form-group">
+                      <label for="landlordNotes">Notes</label>
+                      <textarea class="form-control" id="landlordNotes" rows="3"></textarea>
+                    </div>
+                   <!-- // <button type="submit" class="saveBtn"><img src="{% static 'saveicon.png'%}" /></button> -->
+                    <input type="image" class="saveBtn" src="{% static 'saveicon.png'%}" alt="Submit" />
+                  </fieldset>
+                <h1 class="landlordHeader">Property Details</h1>
+                <p><button>+</button>List a new property</p>
+                <p>My Properties:</p>
+                <div class="propertyItem">
+                        <img src="https://cdn.onlinewebfonts.com/svg/img_315049.png" alt="property" />
+                        <img src="https://cdn.onlinewebfonts.com/svg/img_315049.png" alt="property" />
+                        <img src="https://cdn.onlinewebfonts.com/svg/img_315049.png" alt="property" />
+                        <img src="https://cdn.onlinewebfonts.com/svg/img_315049.png" alt="property" />
+                        <img src="https://cdn.onlinewebfonts.com/svg/img_315049.png" alt="property" />
+                    </div>
+        </div>
+{% endblock %}
+
+{% block help_section %}#login{% endblock %}
