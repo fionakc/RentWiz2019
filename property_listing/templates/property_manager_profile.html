@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+<p>fdsfsdfsd</p>
+
+{% block page_header %}
+    <link rel="stylesheet" href="{% static 'loginAndRegister.css' %}">
+{% endblock %}
+
+{% block main_body %}
+    <div class="landlordDetails">
+        <p>test }</p>
+{#            <!-- {% if user.is_authenticated %} -->#}
+            <h1 class="landlordHeader">Property Manager Profile</h1>
+            <img class="landlordImage" src="https://www.atomix.com.au/media/2015/06/atomix_user31.png" alt="landlordProfile" />
+                <form class="landlordForm" method="post">
+                    {% csrf_token %}
+                    <table>
+                        {{ form.as_table }}
+                    </table>
+{#                    <label>Name:</label>#}
+{#                    <input /><p>{{ contact.name }}  </p>#}
+{#                    <label>Company Name:</label>#}
+{#                    <input /><p></p>#}
+{#                    <label>Phone:</label>#}
+{#                    <input /><p></p>#}
+{#                    <label>Fax:</label>#}
+{#                    <input /><p></p>#}
+{#                    <label>Email:</label>#}
+{#                    <input /><p></p>#}
+{#                    <label>Address:</label>#}
+{#                    <input /><p></p>#}
+                    <button type="submit" class="saveBtn">Save</button>
+                </form>
+{#            <!-- {% endif %} -->#}
+        </div>
+{% endblock %}
+
+{% block help_section %}#login{% endblock %}
