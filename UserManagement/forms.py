@@ -44,8 +44,9 @@ class ContactCreationForm(forms.Form):
         max_length=20,
     )
     #photo = forms.ImageField()
-    password1 = forms.CharField(
-        max_length=20,
+    # password = forms.PasswordInput(
+    password=forms.CharField(widget=forms.PasswordInput()
+
     )
 
 
@@ -86,7 +87,7 @@ class PropertyManagerCreationForm(ContactCreationForm):
         data = self.cleaned_data
         user = RegisteredUser(username=data['registered_username'])
 
-        user.set_password(data["password1"])
+        user.set_password(data["password"])
         user.save()
         contact = Contact(user=user,
                           name=data['name'],
@@ -112,7 +113,7 @@ class TenantCreationForm(ContactCreationForm):
         data = self.cleaned_data
         user = RegisteredUser(username=data['registered_username'])
 
-        user.set_password(data["password1"])
+        user.set_password(data["password"])
         user.save()
         contact = Contact(user=user,
                           name=data['name'],

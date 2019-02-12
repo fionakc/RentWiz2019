@@ -12,7 +12,7 @@ def register(request):
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password1')
+            raw_password = form.cleaned_data.get('password')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
             return redirect('home')
@@ -28,7 +28,7 @@ def register_tenant(request):
         form = TenantCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            raw_password = form.cleaned_data.get('password1')
+            raw_password = form.cleaned_data.get('password')
             user = authenticate(username=user.username, password=raw_password)
             login(request, user)
             return redirect('home')
@@ -43,7 +43,7 @@ def register_landlord(request):
         form = LandlordCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            raw_password = form.cleaned_data.get('password1')
+            raw_password = form.cleaned_data.get('password')
             user = authenticate(username=user.username, password=raw_password)
             login(request, user)
             return redirect('home')
@@ -59,7 +59,7 @@ def register_propertymanager(request):
         form = PropertyManagerCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            raw_password = form.cleaned_data.get('password1')
+            raw_password = form.cleaned_data.get('password')
             user = authenticate(username=user.username, password=raw_password)
             login(request, user)
             return redirect('home')

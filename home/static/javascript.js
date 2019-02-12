@@ -1,3 +1,16 @@
+ function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
 
 function employee() {
     // Get the checkbox
@@ -21,7 +34,7 @@ function vehicle() {
     // If the checkbox is checked, display the output text
     if (checkBox.checked == true) {
         vehicleform.style.display = "block";
-        alert("1");
+        // alert("1");
     }
     if (checkBox.checked == false) {
         vehicleform.style.display = "none";
@@ -32,6 +45,8 @@ function vehicle() {
 function verifyCheckcar() {
     document.getElementById('driverfill').style.display = 'block';
     document.getElementById('passportfill').style.display = 'none';
+    //want to turn passport radio off
+    // document.getElementById('customRadio2').style.display = 'none';
 }
 
 function verifyCheckpass() {

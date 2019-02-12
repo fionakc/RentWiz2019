@@ -21,13 +21,14 @@
 
     <link rel="stylesheet" href="{% static 'custom.css' %}">
     <link rel="stylesheet" href="{% static 'cosmo.css' %}">
+        <link rel="stylesheet" href="{% static 'tenantformUX.css' %}">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous" defer></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous" defer></script>
     <script src="{% static 'javascript.js' %}" defer></script>
-    <script src="{% static 'tenantformUX.js' %}"></script>
+{#    <script src="{% static 'tenantformUX.js' %}"></script>#}
 {#    need this line above??#}
 </head>
 <body>
@@ -51,10 +52,28 @@
                                 <div class="tab">
                                     <h4 class="text-center " style="color:#4CAF50"><i class="material-icons icondown">person_add</i>Tenant Profile</h4>
                                     <fieldset>
+{#                                    upload image#}
+                                        <input type='file' class="inputfile" id="file" style="display: none" onchange="readURL(this);" />
+                                            <p id="ct"></p>
+                                            <label for="file">
+                                             <div class="center">
+                                                 <img id="blah" class="imgPreview" src="{% static 'tappicture.png' %}" alt="Tap to upload your image" />
+                                             </div>
+                                             </label>
+
+                                        {% if tenant.date_of_birth %}
+{#                                            not working#}
                                         <div class="form-group">
                                             <label for="availability">Date of birth</label>
                                             <input type="date" class="form-control" oninput="this.className = ''" {{ tenant.date_of_birth }} name="date_of_birth">
                                         </div>
+                                            {% else %}
+                                            <div class="form-group">
+                                            <label for="availability">Date of birth</label>
+                                            <input type="date" class="form-control" oninput="this.className = ''" name="date_of_birth">
+                                        </div>
+                                            {% endif %}
+
                                         {% if tenant.is_smoker %}
                                         <div class="custom-control custom-checkbox">
                                         <input type="checkbox" class="custom-control-input" id="customCheck1" name="is_smoker" checked=True>
@@ -152,7 +171,7 @@
 {##}
 {#                                            {% else %}#}
                                         <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" onclick="vehicle()" id="tickvehicle">
+                                        <input type="checkbox" class="custom-control-input" onclick="vehicle();" id="tickvehicle">
                                         <label class="custom-control-label" for="tickvehicle">Do you have a vehicle?</label>
 
                                             <div id="havevehicle" style="display: none">
@@ -202,7 +221,8 @@
                                         </div>
                                         <div class="custom-control custom-radio">
                                         <input type="radio" id="customRadio2" name="indentification_type" onclick="verifyCheckpass();" class="custom-control-input">
-                                        <label class="custom-control-label" for="customRadio2"><i class="material-icons icondown">flight</i>Or toggle this other custom radio</label>
+                                        <label class="custom-control-label" for="customRadio2">
+                                            <i class="material-icons icondown">flight</i>Verify account with passport</label>
                                       </div>
 
                             <div id="driverfill" style="display: none">
@@ -277,7 +297,7 @@
                                         <div id="working">
                                         <div class="form-group">
                                             <label for="inputDefault">Employer Name</label>
-                                            <input type="text" name="name" class="form-control" placeholder="Employer name">
+                                            <input type="text" name="name" class="form-control" placeholder="Full name">
                                         </div>
 {#                                        <div class="form-group">#}
 {#                                            <label for="inputDefault">Last Name</label>#}
@@ -357,8 +377,11 @@
                                     </fieldset>
                                 </div>
                                 <div style="overflow:auto;">
+                                    <div style="float:left;">
+                                        <button type="button" class="btn btn-outline-success" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                                    </div>
                                     <div style="float:right;">
-                                    <button type="button" class="btn btn-outline-success" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                                    <button type="button" class="btn btn-outline-success" >Save</button>
                                     <button type="button" class="btn btn-success" id="nextBtn" onclick="nextPrev(1)">Next</button>
                                     </div>
                                 </div>
