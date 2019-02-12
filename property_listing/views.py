@@ -5,8 +5,8 @@ from .models import Landlord, Listing, Property, PropertyManager
 from UserManagement.models import Contact
 
 # Create your views here.
-# def index(request):
-#     return render(request, 'index.html')
+def index(request):
+    return render(request, 'index.html')
 
 def create(request):
     if request.method == "POST":

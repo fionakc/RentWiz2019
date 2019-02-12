@@ -1,0 +1,43 @@
+{% extends "base.html" %}  //add header and footer to page
+{% load static %}       //load in css etc
+{% load widget_tweaks %}  //need to use widget tweaks
+
+{% block title %}
+    - Profile
+{% endblock %}
+
+{% block page_header %}
+    <link rel="stylesheet" href="{% static 'loginAndRegister.css' %}">
+{% endblock %}
+
+
+{% block main_body %}
+
+ {% if user.is_authenticated %}
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form }}
+{#            {% for field in form %}#}
+{#                <div class="FormField">#}
+{#                    <label class="FormField__Label">{{ field.label_tag }}</label>#}
+{#                    {% render_field field class="FormField__Input inputTransparent" %}#}
+{#                </div>#}
+{#                <h1>test</h1>#}
+{#            {% endfor %}#}
+{##}
+{#<h1>test</h1>#}
+
+            {% if form %}
+            <div class="FormField">
+
+                <button type="submit" class="FormField__Button mr-20">Update details</button>
+            </div>
+            {% endif %}
+
+        </form>
+     {% else %}
+    {% endif %}
+
+
+{% endblock %}
