@@ -25,23 +25,6 @@ def confirmation(request):
     return render(request, 'confirmation.html')
 
 
-# class UpdateTenantProfilePart1(UpdateView):
-#     def tenant_profile(request):
-#         # return render(request, 'tenantProfile.html')
-#
-#         # user_id = request.POST.get('tenant_id')
-#         tenant =
-#
-#         # tenant = Tenant.objects.get(pk=request.GET.get('tenant_id'))
-#         if request.method == 'POST':
-#             form = TenantProfile_part1_Form(request.POST)
-#             if form.is_valid():
-#                 pass
-#                 form.save(request)  #still need this??
-#         else:
-#             form = TenantProfile_part1_Form()
-#
-#         return render(request, 'tenantProfile.html',{'form': form})
 
 def updateTenantProfile(request, tenant_id):
     contact = [x for x in Contact.objects.all() if request.user == x.user][0]
@@ -53,6 +36,12 @@ def updateTenantProfile(request, tenant_id):
         'date_of_birth': tenant.date_of_birth,
         'is_smoker': tenant.is_smoker,
         'has_pets': tenant.has_pets,
+
+        'identification_number': tenant.identification_number,
+        'vehicle_registration': tenant.vehicle_registration,
+        'vehicle_make_and_model': tenant.vehicle_make_and_model,
+        'is_first_timer': tenant.is_first_timer,
+        'has_children': tenant.has_children,
     }
     if request.method == 'POST':
         form = TenantProfile_part1_Form(request.POST)
@@ -68,30 +57,3 @@ def updateTenantProfile(request, tenant_id):
     context = {'contact': contact, 'tenant': tenant, 'form': form}
     return render(request, 'tenantProfile.html', context)
 
-
-# def ProfileView(request):
-#     user_id = request.POST.get('user_id')
-#     user = UserInfo.objects.get(pk=user_id)
-#     if request.method == 'POST':
-#         form = Editform(request.POST, instance=user)
-#         if form.is_valid():
-#             form.save()
-#     else:
-#         form = Editform(instance=user)
-#
-#     return render (request, 'profile_view.html', {'user':username, 'form':form})
-
-
-# def register_tenant(request):
-#
-#     if request.method == 'POST':
-#         form = TenantCreationForm(request.POST)
-#         if form.is_valid():
-#             user = form.save()
-#             raw_password = form.cleaned_data.get('password1')
-#             user = authenticate(username=user.username, password=raw_password)
-#             login(request, user)
-#             return redirect('home')
-#     else:
-#         form = TenantCreationForm()
-#     return render(request, 'register_tenant.html', {'form': form})

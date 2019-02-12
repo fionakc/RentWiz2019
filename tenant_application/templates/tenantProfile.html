@@ -3,21 +3,302 @@
 {% load widget_tweaks %}  //need to use widget tweaks
 
 {% block title %}
-    - Profile
 {% endblock %}
-
+    - Profile
 {% block page_header %}
     <link rel="stylesheet" href="{% static 'loginAndRegister.css' %}">
 {% endblock %}
-
-
 {% block main_body %}
-
  {% if user.is_authenticated %}
 
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="{% static 'custom.css' %}">
+    <link rel="stylesheet" href="{% static 'cosmo.css' %}">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous" defer></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous" defer></script>
+    <script src="{% static 'javascript.js' %}" defer></script>
+</head>
+<body>
+    <br/>
+    <hr>
+    <br/>
+     <h2 class="text-center " style="color:#4CAF50"> Profile Sign Up</h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <h3 class="text-center ">Tell Us about yourself</h3>
+                <br/>
+
+                <main class="content" role="content">
+                        <section id="section1" class="card">
+                            <div class="container-fluid">
+
+                                <!-- MultiStep Form -->
+                                <form id="regForm"  method="POST" class="post-form">{% csrf_token %}
+                                <!-- One "tab" for each step in the form: -->
+                                <div class="tab">
+                                    <h4 class="text-center " style="color:#4CAF50"><i class="material-icons icondown">person_add</i>Tenant Profile</h4>
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <label for="availability">Date of birth</label>
+                                            <input type="date" class="form-control" oninput="this.className = ''" name="date_of_birth">
+                                        </div>
+                                        <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1" name="is_smoker">
+                                        <label class="custom-control-label" for="customCheck1">Do you smoke?</label>
+                                        </div>
+                                        <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck2" name="has_pets" >
+                                        <label class="custom-control-label" for="customCheck2">Do you have pet/s?</label>
+                                        </div>
+                                        <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck3" name="is_first_timer">
+                                        <label class="custom-control-label" for="customCheck3">Have you been a tenant before?</label>
+                                        </div>
+                                        <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" onclick="vehicle()" id="tickvehicle" >
+                                        <label class="custom-control-label" for="tickvehicle">Do you have a vehicle?</label>
+                                        </div>
+                                        <div id="havevehicle" style="display: none">
+                                            <div class="form-group">
+                                            <label for="inputDefault">Vehicle registration number</label>
+                                            <input type="text" name="vehicle_type" class="form-control" placeholder="Default input" >
+                                            </div>
+                                            <div class="form-group">
+                                            <label for="inputDefault">
+                                            Vehicle make and model</label>
+                                            <input type="text" name="vehicle_make_and_model" class="form-control" placeholder="Default input">
+                                            </div>
+
+                                        </div>
+
+                                    </fieldset>
+                                    <br/>
+                                </div>
+                                <script>
+                                    function vehicle() {
+                                        var checkBox = document.getElementById("tickvehicle");
+                                        // Get the output text
+                                        var vehicleform = document.getElementById("havevehicle");
+                                        // If the checkbox is checked, display the output text
+                                        if (checkBox.checked == true) {
+                                            vehicleform.style.display = "block";
+                                        }
+                                        if (checkBox.checked == false) {
+                                            vehicleform.style.display = "none";
+                                        }
+                                    }
+
+                                </script>
+                                <div class="tab">
+                                    <h4 class="text-center " style="color:#4CAF50"><i class="material-icons icondown">verified_user</i> Verified
+                                Identification</h4>
+                                    <p>Select your method of verification</p>
+                                    <fieldset>
+                                        <div class="custom-control custom-radio">
+                                        <input type="radio" id="customRadio1" name="identification_type" onclick="verifyCheckcar();" class="custom-control-input">
+                                        <label class="custom-control-label" for="customRadio1">
+                                            <i class="material-icons icondown">directions_car</i>Verify account with drivers license</label>
+                                        </div>
+                                        <div class="custom-control custom-radio">
+                                        <input type="radio" id="customRadio2" name="indentification_type" onclick="verifyCheckpass();" class="custom-control-input">
+                                        <label class="custom-control-label" for="customRadio2"><i class="material-icons icondown">flight</i>Or toggle this other custom radio</label>
+                                      </div>
+
+                            <div id="driverfill" style="display: none">
+
+                                 <h4 class="text-center " style="color:#4CAF50"><i class="material-icons icondown">directions_car</i> Verified
+                                    with driver license</h4>
+                                <div class='row'>
+                                    <div class='input-field col s12'>
+                                        <input class='validate' type='text' name='identification_number' id='driverlicensenum' />
+                                        <label for='driverlicensenum'>NZ driver license number</label>
+                                    </div>
+                                    <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect green'>Next</button><br><br>
+                                </div>
+                            </div>
+                            <div id="passportfill" style="display: none">
+                                 <h4 class="text-center " style="color:#4CAF50"><i class="material-icons icondown">flight</i> Verified with
+                                    Passport</h4>
+                                <div class='row'>
+                                    <div class='input-field col s12'>
+                                        <input class='validate' type='text' name='identification_number' id='passportnumber' />
+                                        <label for='passportnumber'>Passport number</label>
+                                    </div>
+                                </div>
+                            </div>
+                                    </fieldset>
+                                </div>
+                                    <div class="tab">
+                                    <h4 class="text-center " style="color:#4CAF50"><i class="material-icons icondown">account_circle</i> Emergency Contact Name</h4>
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <label for="inputDefault">Name</label>
+                                            <input type="text" name="name" class="form-control" placeholder="Full name">
+                                        </div>
+{#                                        <div class="form-group">#}
+{#                                            <label for="inputDefault">Last Name</label>#}
+{#                                            <input type="text" name="name" class="form-control" placeholder="Last name">#}
+{#                                        </div>#}
+                                        <h4 class="text-center " style="color:#4CAF50"><i class="material-icons icondown">home</i> Address</h4>
+                                        <div class="form-group">
+                                            <label for="inputDefault">Street Number & Name</label>
+                                            <input type="text" name="address_line1" class="form-control" placeholder="Street number and name">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputDefault">Suburb</label>
+                                            <input type="text" name="address_line2" class="form-control" placeholder="Suburb">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputDefault">Town / City</label>
+                                            <input type="text" name="address_line3" class="form-control" placeholder="Town/City">
+                                        </div>
+                                        <h4 class="text-center " style="color:#4CAF50"><i class="material-icons icondown">contact_phone</i> Contact Details</h4>
+                                        <div class="form-group">
+                                            <label for="inputDefault">Contact Number</label>
+                                            <input type="text" name="mobile_phone" class="form-control" placeholder="Phone number">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputDefault">Contact Email</label>
+                                            <input type="text" name="email" class="form-control" placeholder="Email">
+                                        </div>
+
+                                    </fieldset>
+                                </div>
+
+                                <div class="tab">
+                                    <h4 class="py-2 text-center" style="color:#4CAF50"><i class="material-icons icondown">work</i>Employement status</h4>
+                                    <fieldset>
+                                        <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" name="s" id="tickisworking"
+                                        onclick="employee()" checked>
+                                        <label class="custom-control-label" for="customCheck1">Have you ever been Employeed?</label>
+                                        </div>
+                                        <div id="working">
+                                        <div class="form-group">
+                                            <label for="inputDefault">Employer Name</label>
+                                            <input type="text" name="name" class="form-control" placeholder="Employer name">
+                                        </div>
+{#                                        <div class="form-group">#}
+{#                                            <label for="inputDefault">Last Name</label>#}
+{#                                            <input type="text" name="bedrooms" class="form-control" placeholder="Default input">#}
+{#                                        </div>#}
+                                        <h4 class="text-center " style="color:#4CAF50"><i class="material-icons icondown">home</i> Address</h4>
+                                        <div class="form-group">
+                                            <label for="inputDefault">Street Number & Name</label>
+                                            <input type="text" name="address_line1" class="form-control" placeholder="Street number and name">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputDefault">Suburb</label>
+                                            <input type="text" name="address_line2" class="form-control" placeholder="Suburb">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputDefault">Town / City</label>
+                                            <input type="text" name="address_line3" class="form-control" placeholder="Town/City">
+                                        </div>
+                                        <h4 class="text-center " style="color:#4CAF50"><i class="material-icons icondown">contact_phone</i> Contact Details</h4>
+                                        <div class="form-group">
+                                            <label for="inputDefault">Contact Number</label>
+                                            <input type="text" name="mobile_phone" class="form-control" placeholder="Phone number">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputDefault">Contact Email</label>
+                                            <input type="text" name="email" class="form-control" placeholder="Email">
+                                        </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                    <script>function employee() {
+    // Get the checkbox
+    var checkBox = document.getElementById("tickisworking");
+    // Get the output text
+    var text = document.getElementById("working");
+
+    // If the checkbox is checked, display the output text
+    if (checkBox.checked == true) {
+        text.style.display = "block";
+    } else {
+        text.style.display = "none";
+    }
+}</script>
+                                    <div class="tab">
+                                    <h4 class="py-2 text-center" style="color:#4CAF50"><i class="material-icons icondown">account_circle</i>Referee Contact Name</h4>
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <label for="inputDefault">Referee Name</label>
+                                            <input type="text" name="name" class="form-control" placeholder="Full name">
+                                        </div>
+{#                                        <div class="form-group">#}
+{#                                            <label for="inputDefault">Last Name</label>#}
+{#                                            <input type="text" name="bedrooms" class="form-control" placeholder="Default input">#}
+{#                                        </div>#}
+                                        <h4 class="text-center " style="color:#4CAF50"><i class="material-icons icondown">home</i> Address</h4>
+                                        <div class="form-group">
+                                            <label for="inputDefault">Street Number & Name</label>
+                                            <input type="text" name="address_line1" class="form-control" placeholder="Street number and name">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputDefault">Suburb</label>
+                                            <input type="text" name="address_line2" class="form-control" placeholder="Suburb">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputDefault">Town / City</label>
+                                            <input type="text" name="address_line3" class="form-control" placeholder="Town/City">
+                                        </div>
+                                        <h4 class="text-center " style="color:#4CAF50"><i class="material-icons icondown">contact_phone</i> Contact Details</h4>
+                                        <div class="form-group">
+                                            <label for="inputDefault">Contact Number</label>
+                                            <input type="text" name="mobile_phone" class="form-control" placeholder="Phone number">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputDefault">Contact Email</label>
+                                            <input type="text" name="email" class="form-control" placeholder="Email">
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <div style="overflow:auto;">
+                                    <div style="float:right;">
+                                    <button type="button" class="btn btn-outline-success" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                                    <button type="button" class="btn btn-success" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                                    </div>
+                                </div>
+                                <!-- Circles which indicates the steps of the form: -->
+                                <div style="text-align:center;margin-top:40px;">
+                                    <span class="step"></span>
+                                    <span class="step"></span>
+                                    <span class="step"></span>
+                                    <span class="step"></span>
+                                    <span class="step"></span>
+                                </div>
+                                </form>
+                                <!-- /.MultiStep Form -->
+                            </div>
+                        </section>
+                    </main> <!-- /content -->
+                    <br/><br/>
+            </div>
+        </div>
+
+        <br/>
+
+
+    </div>
+
+
+</body>
+</html>
+{#            {% csrf_token %}#}
+{#            {{ form }}#}
 {#            {% for field in form %}#}
 {#                <div class="FormField">#}
 {#                    <label class="FormField__Label">{{ field.label_tag }}</label>#}
@@ -28,14 +309,14 @@
 {##}
 {#<h1>test</h1>#}
 
-            {% if form %}
-            <div class="FormField">
-
-                <button type="submit" class="FormField__Button mr-20">Update details</button>
-            </div>
-            {% endif %}
-
-        </form>
+{#            {% if form %}#}
+{#            <div class="FormField">#}
+{##}
+{#                <button type="submit" class="FormField__Button mr-20">Update details</button>#}
+{#            </div>#}
+{#            {% endif %}#}
+{##}
+{#        </form>#}
      {% else %}
     {% endif %}
 
