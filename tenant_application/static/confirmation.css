@@ -1,4 +1,9 @@
-
+.my-nav{
+    width:relative;
+    margin: 0% 20% 20% 20%;
+    background-color: #008001;
+    border-radius: 5%;
+}
 
 .progressBar {
  
@@ -102,7 +107,7 @@
     font-size: 2.5em;
     font-weight: 600;
     text-align: center;
-}
+} 
 
 .pageSubHeading {
   color: #47525E;
@@ -124,4 +129,4 @@
   color: #47525E;
   font-family: Lato;
   font-weight: 400;
-}
+} 

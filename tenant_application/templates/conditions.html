@@ -6,12 +6,15 @@
 {% endblock %}
 
     {% block head_extras %}
+      <link rel="stylesheet" href="{% static 'cosmo.css' %}">
         <link rel="stylesheet" href="{% static 'propertyConditions.css' %}">
     {% endblock %}
 
 {% block main_body %}
       <div class="propertyConditions">
-          <ProgressBar percent="60"></ProgressBar>
+         <div class="progress">
+  <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
           <h1>
             Are you aware of the below Duties & Conditions of this property?
           </h1>
@@ -30,7 +33,10 @@
                         <li>No smoking</li>
                         <li>Max 3 tenants</li>
                     </ol>
-                    <FormCheckbox label="I accept"/>
+                      <div class="custom-control custom-checkbox">
+      <input type="checkbox" class="custom-control-input" id="customCheck1" checked="">
+      <label class="custom-control-label" for="customCheck1">I accept</label>
+                </div>
                 </div>
                 </div>
                 <div class="propertyCondition--block_list__item">
@@ -44,19 +50,24 @@
                       <li>Must keep garden tidy</li>
                     </ol>
                     <div>
-                    <FormCheckbox label="I accept"/>
+                     <div class="form-group">
+    <div class="custom-control custom-checkbox">
+      <input type="checkbox" class="custom-control-input" id="customCheck1" checked="">
+      <label class="custom-control-label" for="customCheck1">I accept</label>
+    </div>
+    
+  </div>
                     </div>
                 </div>    
           </div>
+          
           <div class="propertyCondition--controlButtons">
-{#            <Link to="/adultprofile">#}
-{#              <ControlButton name="Back"/>#}
-{#            </Link>#}
-{##}
-{#            <Link to="/propertyconfirmation">#}
-{#              <ControlButton name="Agree & Next"/>#}
-{#            </Link>#}
-            <a class="controlButtons--rightButton" href="{% url 'confirmation' queryset.id %}">Next</a>
+            <a class="my-nav btn btn-primary" href="{% url 'addTenants' queryset.id %}" role="button">Back</a>
+
+
+            <a class="my-nav btn btn-primary" href="{% url 'confirmation' queryset.id %}" role="button">Next</a>
+
+            
           </div>
           
      </div>

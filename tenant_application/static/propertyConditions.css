@@ -3,6 +3,13 @@
     grid-template-columns: 1fr;
 }
 
+.my-nav{
+    width:relative;
+    margin: 0% 20% 20% 20%;
+    background-color: #008001;
+    border-radius: 5%;
+}
+
 .propertyConditions h1 {
     margin: 1em auto;
     color: #47525E;
