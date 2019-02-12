@@ -1,17 +1,14 @@
 html {
     background-color: #fcfcfc;
 }
-
 .navbar {
     border-bottom: 4px solid #39b45a;
     background-color: #fcfcfc;
     padding-bottom: 0;
 }
-
 .navbar {
   padding: 0 1rem !important;
 }
-
 .nav-logo {
   display: absolute;
   height: 60px;
@@ -19,27 +16,30 @@ html {
   margin-bottom: -35px;
   padding-top: 0;
 }
-
+@media (max-width: 768px) {
+  .nav-logo {
+    height: 35px;
+    margin-top: -20px;
+    margin-bottom: -20px;
+    padding-top: 0;
+  }
+}
 .navbar-nav {
   margin-top: 30px;
 }
-
 .card {
   background: #fff;
   border-radius: 2px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.10);
   transition: all 0.3s cubic-bezier(.05,.2,.05,0.5);
 }
-
 .card:hover {
   box-shadow: 0 14px 28px rgba(0,0,0,0.15);
 }
-
 #regForm {
   padding: 50px;
   width: 100%;
 }
-
 input {
   display: block;
   width: 100%;
@@ -58,30 +58,30 @@ input {
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
 }
-
 /* Mark input boxes that get errors during validation: */
 input.invalid {
   background-color: #ffdddd;
 }
-
 /* Hide all steps by default: */
 .tab {
   display: none;
 }
-
-
 /* Step marker: Place in the form. */
 .step {
   height: 15px;
   width: 15px;
   margin: 0 2px;
   background-color: #bbbbbb;
-  border: none;  
+  border: none;
   border-radius: 50%;
   display: inline-block;
   opacity: 0.5;
 }
-
 .step.active {
   opacity: 1;
+}
+.input-group-addon {
+  padding-top: 4px;
+  padding-right: 15px;
+  font-size: 1.4em;
 }
