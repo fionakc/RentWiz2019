@@ -1,5 +1,6 @@
 from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
+from django.contrib import messages
 
 from .forms import RegisteredUserCreationForm, PropertyManagerCreationForm, TenantCreationForm, LandlordCreationForm
 
@@ -31,6 +32,7 @@ def register_tenant(request):
             raw_password = form.cleaned_data.get('password')
             user = authenticate(username=user.username, password=raw_password)
             login(request, user)
+            messages.info(request, 'Thank you for registering with Rentwiz')
             return redirect('home')
     else:
         form = TenantCreationForm()

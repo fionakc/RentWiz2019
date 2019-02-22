@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block page_header %}
+
+{% endblock %}
+
+{% block main_body %}
+
+
+    <form method="post">
+            {% csrf_token %}
+
+            {{ form.as_table }}
+            <div class="">
+                <button type="submit" class="">Add Property</button>
+            </div>
+
+    </form>
+
+
+{% endblock %}

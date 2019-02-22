@@ -3,6 +3,42 @@
 .adultProfile h1{
 text-align: center
 }
+/* 
+h1 {
+    margin: 0.25em auto;
+    color: #47525E;
+    font-size: 3.0em;
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+} */
+
+.my-nav{
+    width:relative;
+    margin: 0% 20% 20% 20%;
+    background-color: #008001;
+    border-radius: 5%;
+}
+.right-my-nav{
+    width:relative;
+    margin: 0% 20% 20% 40%;
+    background-color: #008001;
+    border-radius: 5%;
+}
+.invite{
+justify-self: last baseline;
+width:relative;
+background-color: #008001;
+border-radius: 5%;
+margin-top: 0%;
+}
+.my-input{
+    width:100%;
+}
 
 .adultProfile--block {
     display: grid;
@@ -37,13 +73,13 @@ text-align: center
     width: 100%;
 }
 
-.adultProfile--details_info ul li{
+/* .adultProfile--details_info ul li{
 
     list-style: none;
-    /* margin: 0.25em;  */
+     margin: 0.25em; 
     color: #8190A5;
     text-align: left;
-}
+} */
 
 .adultProfile--details__add {
    
@@ -55,7 +91,7 @@ text-align: center
 
 .adultProfile--details__add  button {
     background-color: #008001;
-    border-radius: 10px;
+    border-radius: 5px;
     border: none;
     color: #fff;
     width: 90%;

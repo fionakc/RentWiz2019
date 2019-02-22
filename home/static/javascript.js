@@ -114,4 +114,36 @@ function fixStepIndicator(n) {
   //... and adds the "active" class on the current step:
   x[n].className += " active";
 }
+var img1 = document.getElementById("img11");
+  var img2 = document.getElementById("img22");
+  var img3 = document.getElementById("img22");
 
+  function img1(){
+img1.style.display = 'block';
+img2.style.display = 'none';
+img3.style.display = 'none';
+alert("h1");
+  }
+
+  function img2(){
+    img1.style.display = 'none';
+    img2.style.display = 'block';
+    img3.style.display = 'none';
+    alert("h2");
+  }
+
+  function img2(){
+    img1.style.display = 'none';
+    img2.style.display = 'none';
+    img3.style.display = 'block';
+    alert("h3");
+  }
+
+  function responsive() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+      x.className += " responsive";
+    } else {
+      x.className = "topnav";
+    }
+  }

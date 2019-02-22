@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    - Listings
+{% endblock %}
+
+{% block head_extras %}
+    <meta name="description" content="this should be a description of what Circa about">
+    <meta name="keywords" content="add some keywords for Search Engine Optimisation">
+    {% load static %}
+    {#    <link rel="stylesheet" href="{% static 'index.css' %}">#}
+{#    <link rel="stylesheet" href="{% static 'loginAndRegister.css' %}">#}
+
+{% endblock %}
+
+{% block page_header %}
+{% endblock %}
+
+{% block main_body %}
+    <h1>Listings</h1>
+
+    <table>
+    {% for listing in listings %}
+        <tr>
+            <td>{{ listing.id }}</td>
+            <td>| {{ listing.description }}</td>
+            <td><a href="{% url 'apply' listing.id %}"><button>Apply</button></a></td>
+        </tr>
+    {% endfor %}
+    </table>
+
+
+    <!--- TAGLINE BANNER ---------------------->
+    {#    <div class="tagline">#}
+    {#        <p class="headertext">Rentwiz, houses for rent. the home of rentals for kiwis. </p>#}
+    {#    </div>#}
+    <!-- TAGLINE BANNER ENDS ------------------------->
+
+
+
+{% endblock %}
+
+{% block help_section %}#home{% endblock %}

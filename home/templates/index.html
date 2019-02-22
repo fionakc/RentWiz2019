@@ -9,7 +9,7 @@
     <meta name="keywords" content="add some keywords for Search Engine Optimisation">
     {% load static %}
     {#    <link rel="stylesheet" href="{% static 'index.css' %}">#}
-{#    <link rel="stylesheet" href="{% static 'loginAndRegister.css' %}">#}
+    {#    <link rel="stylesheet" href="{% static 'loginAndRegister.css' %}">#}
 
 {% endblock %}
 
@@ -18,12 +18,20 @@
 
 {% block main_body %}
 
-
     <!--- TAGLINE BANNER ---------------------->
     {#    <div class="tagline">#}
     {#        <p class="headertext">Rentwiz, houses for rent. the home of rentals for kiwis. </p>#}
     {#    </div>#}
     <!-- TAGLINE BANNER ENDS ------------------------->
+
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 
 
 

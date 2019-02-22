@@ -20,7 +20,7 @@ class Tenant(models.Model):
         default=contact.name,
     )
     date_of_birth = models.DateField(blank=True, null=True)
-    is_18_plus = models.BooleanField()
+    is_18_plus = models.BooleanField(default=True)
 
     identification_type = models.CharField(
         max_length=20,
@@ -28,12 +28,14 @@ class Tenant(models.Model):
         choices=[('Drivers License', 'Drivers License'),
                  ('Passport', 'Passport'),
                  ('Other', 'Other')],
+        default=''
     )
     identification_number = models.CharField(
         # It doesn't have to be a number.
         # For a drivers license you could add classification too
         max_length=40,
         blank=True,
+        default = '',
     )
 
     vehicle_registration = models.CharField(
@@ -43,6 +45,7 @@ class Tenant(models.Model):
     vehicle_make_and_model = models.CharField(
         max_length=80,
         blank=True,
+        default = '',
     )
 
     emergency_contact = models.ForeignKey(
@@ -70,7 +73,7 @@ class Tenant(models.Model):
     is_smoker = models.BooleanField(null=True)
     has_children = models.BooleanField(null=True)
     has_pets = models.BooleanField(null=True)
-    comments = models.TextField(blank=True)
+    comments = models.TextField(blank=True, default='')
 
     rating = models.IntegerField(blank=True, null=True)
 
@@ -91,7 +94,7 @@ class Reference(models.Model):
         on_delete=models.PROTECT
     )
 
-    description = models.TextField(blank=True)
+    description = models.TextField(blank=True, default='')
     # Add other fields for reference
     # E.g. reference type
 
@@ -116,9 +119,9 @@ class Application(models.Model):
         related_name='co_tenants_set',
     )
 
-    start_date_request = models.DateField(blank=True)
-    duration_request = models.CharField(max_length=80, blank=True)
-    comments = models.TextField(blank=True)
+    start_date_request = models.DateField(blank=True, null=True)
+    duration_request = models.CharField(max_length=80, blank=True, default='')
+    comments = models.TextField(blank=True, default='')
     # Below should perhaps be in Agreement; not here
     has_accepted_tcd = models.BooleanField(null=True)
 
