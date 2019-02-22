@@ -127,7 +127,7 @@ class LandlordCreationForm(ContactCreationForm):
     def save(self):
         data = self.cleaned_data
         user = RegisteredUser(username=data['registered_username'])
-        user.set_password(data["password1"])
+        user.set_password(data["password"])
         user.save()
 
         contact = Contact(user=user,

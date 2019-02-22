@@ -8,6 +8,6 @@ urlpatterns=[
     path('confirmation/<int:id>', views.confirmation, name='confirmation'),
     path('addMoreT/<int:id>', views.addMoreT, name='addMoreT'),
     path('done/<int:id>', views.done, name='done'),
-path('tenant-profile/<slug:tenant_id>/', views.updateTenantProfile, name='tenant_profile'),
+    path('tenant-profile/<slug:tenant_id>/', views.updateTenantProfile, name='tenant_profile'),
 
 ]
