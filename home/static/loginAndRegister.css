@@ -80,12 +80,15 @@
   margin-bottom: 40px;
 }
 
+/*field names, text currently white*/
 .FormField__Label {
   display: block;
   text-transform: uppercase;
   font-size: .9em;
   color: white;
 }
+
+/*input field text, text currently white*/
 .FormField__Input {
   width: 85%;
   background-color: transparent;
@@ -103,6 +106,8 @@
   color: #616E7F;
 }
 
+/*button*/
+/*currently green background, white text*/
 .FormField__Button {
   background-color: #31B404;
   color: white;

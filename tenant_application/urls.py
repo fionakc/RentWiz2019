@@ -7,5 +7,5 @@ urlpatterns=[
     path('conditions/', views.conditions, name='conditions'),
     path('confirmation/', views.confirmation, name='confirmation'),
     path('addMoreT/', views.addMoreT, name='addMoreT'),
-    path('tenant-profile/<int:tenant_id>/', views.updateTenantProfile, name='tenant_profile'),
+    path('tenant-profile/<slug:tenant_id>/', views.updateTenantProfile, name='tenant_profile'),
 ]
